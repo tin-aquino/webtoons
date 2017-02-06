@@ -1,0 +1,22 @@
+#image{
+	border: solid;
+	height: 270px;
+
+}
+
+#input{
+	width: 560px;
+}
+
+#input input{
+	margin-bottom: 10px;
+}
+
+#input textarea{
+	margin-bottom: 10px;
+}
+
+#input button{
+	margin-right: 10px;
+	width: 100px;
+}
