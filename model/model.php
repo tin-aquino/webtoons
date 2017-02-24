@@ -666,6 +666,22 @@
         }
     }
 
+    //insert user table
+    function insert_user($accountID, $lname, $fname, $mname, $bday, $sex, $city, $province, $email) {
+        global $con;
+
+        $query= "INSERT wt_user(accountID, lname, fname, mname, birthday, sex, city, province, email)".
+                    "VALUES('$accountID', '$lname', '$fname', '$mname', '$bday', '$sex', '$city', '$province','$email')";
+        $result = mysqli_query($con, $query);
+
+        if ($result) {
+            return true;
+        }
+        else {
+            echo mysqli_error($con);
+        }
+    }
+
     //check if account exists
     function account_exists($lname, $fname, $mname, $idnum, $atype) {
         global $con;
@@ -738,7 +754,7 @@
     }
 
     //employee list
-    function employee_list(){
+    function employee_list() {
         global $con;
 
         $query_employee = "SELECT wt_employee.accountID, wt_employee.lname, wt_employee.fname, wt_employee.idnum, 
@@ -747,7 +763,7 @@
         $result = mysqli_query($con, $query_employee);
         $i = 0;
 
-        while($row = mysqli_fetch_array($result)){
+        while($row = mysqli_fetch_array($result)) {
             $i = $i + 1;
             $lname = $row['lname'];
             $fname = $row['fname'];            
@@ -767,7 +783,7 @@
     }
 
     //admin list
-    function admin_list(){
+    function admin_list() {
         global $con;
 
         $query_admin = "SELECT wt_admin.accountID, wt_admin.lname, wt_admin.fname, wt_admin.idnum, 
@@ -776,7 +792,7 @@
         $result = mysqli_query($con, $query_admin);
         $i = 0;
 
-        while($row = mysqli_fetch_array($result)){
+        while($row = mysqli_fetch_array($result)) {
             $i = $i + 1;
             $lname = $row['lname'];
             $fname = $row['fname'];            
@@ -796,7 +812,7 @@
     }
 
     //admin list
-    function all_list(){
+    function all_list() {
         global $con;
 
         $query_admin = "SELECT wt_admin.accountID, wt_admin.lname, wt_admin.fname, wt_admin.idnum, 
@@ -810,7 +826,7 @@
         $result_employee = mysqli_query($con, $query_employee);
         $i = 0;
 
-        while($row = mysqli_fetch_array($result_admin)){
+        while($row = mysqli_fetch_array($result_admin)) {
             $i = $i + 1;
             $lname = $row['lname'];
             $fname = $row['fname'];            
@@ -828,7 +844,7 @@
                 </tr>";
         }
 
-        while($row = mysqli_fetch_array($result_employee)){
+        while($row = mysqli_fetch_array($result_employee)) {
             $i = $i + 1;
             $lname = $row['lname'];
             $fname = $row['fname'];            
@@ -848,7 +864,7 @@
     }
 
     //active list
-    function active_list(){
+    function active_list() {
         global $con;
 
         $query_admin = "SELECT wt_admin.accountID, wt_admin.lname, wt_admin.fname, wt_admin.idnum, 
@@ -862,7 +878,7 @@
         $result_employee = mysqli_query($con, $query_employee);
         $i = 0;
 
-        while($row = mysqli_fetch_array($result_admin)){
+        while($row = mysqli_fetch_array($result_admin)) {
             $i = $i + 1;
             $lname = $row['lname'];
             $fname = $row['fname'];            
@@ -880,7 +896,7 @@
                 </tr>";
         }
 
-        while($row = mysqli_fetch_array($result_employee)){
+        while($row = mysqli_fetch_array($result_employee)) {
             $i = $i + 1;
             $lname = $row['lname'];
             $fname = $row['fname'];            
@@ -900,7 +916,7 @@
     }
 
     //inactive list
-    function inactive_list(){
+    function inactive_list() {
         global $con;
 
         $query_admin = "SELECT wt_admin.accountID, wt_admin.lname, wt_admin.fname, wt_admin.idnum, 
@@ -914,7 +930,7 @@
         $result_employee = mysqli_query($con, $query_employee);
         $i = 0;
 
-        while($row = mysqli_fetch_array($result_admin)){
+        while($row = mysqli_fetch_array($result_admin)) {
             $i = $i + 1;
             $lname = $row['lname'];
             $fname = $row['fname'];            
@@ -932,7 +948,7 @@
                 </tr>";
         }
 
-        while($row = mysqli_fetch_array($result_employee)){
+        while($row = mysqli_fetch_array($result_employee)) {
             $i = $i + 1;
             $lname = $row['lname'];
             $fname = $row['fname'];            
@@ -952,7 +968,7 @@
     }
 
     //user list
-    function user_all_list(){
+    function user_all_list() {
         global $con;
 
         $query = "SELECT wt_user.accountID, wt_user.lname, wt_user.fname, wt_user.birthday, wt_user.sex, wt_user.city, wt_user.province, wt_user.email,
@@ -961,7 +977,7 @@
         $result = mysqli_query($con, $query);
         $i = 0;
 
-        while($row = mysqli_fetch_array($result)){
+        while($row = mysqli_fetch_array($result)) {
             $i = $i + 1;
             $lname = $row['lname'];
             $fname = $row['fname'];            
@@ -991,7 +1007,7 @@
     }
 
     //user list
-    function user_active_list(){
+    function user_active_list() {
         global $con;
 
         $query = "SELECT wt_user.accountID, wt_user.lname, wt_user.fname, wt_user.birthday, wt_user.sex, wt_user.city, wt_user.province, wt_user.email,
@@ -1000,7 +1016,7 @@
         $result = mysqli_query($con, $query);
         $i = 0;
 
-        while($row = mysqli_fetch_array($result)){
+        while($row = mysqli_fetch_array($result)) {
             $i = $i + 1;
             $lname = $row['lname'];
             $fname = $row['fname'];            
@@ -1030,7 +1046,7 @@
     }
 
     //user list
-    function user_inactive_list(){
+    function user_inactive_list() {
         global $con;
 
         $query = "SELECT wt_user.accountID, wt_user.lname, wt_user.fname, wt_user.birthday, wt_user.sex, wt_user.city, wt_user.province, wt_user.email,
@@ -1039,7 +1055,7 @@
         $result = mysqli_query($con, $query);
         $i = 0;
 
-        while($row = mysqli_fetch_array($result)){
+        while($row = mysqli_fetch_array($result)) {
             $i = $i + 1;
             $lname = $row['lname'];
             $fname = $row['fname'];            
@@ -1067,4 +1083,144 @@
                 </tr>";
         }
     }
+
+    //verify if account exists (forgot password)
+    function verify_fpass($username, $email) {
+        global $con;
+
+        $query_accountID = "SELECT accountID, username FROM wt_accounts WHERE username='$username'";
+        $result_accountID = mysqli_query($con, $query_accountID);
+
+        if ($result_accountID) {
+            $row = mysqli_fetch_array($result_accountID);
+            $accountID = $row['accountID'];
+
+            $query_admin = "SELECT email FROM wt_admin WHERE accountID ='$accountID' AND email='$email' ";
+            $query_employee = "SELECT email FROM wt_employee WHERE accountID ='$accountID' AND email='$email' ";
+            $query_user = "SELECT email FROM wt_user WHERE accountID ='$accountID' AND email='$email' ";
+
+            $result_admin = mysqli_query($con, $query_admin);
+            $result_employee = mysqli_query($con, $query_employee);
+            $result_user = mysqli_query($con, $query_user);
+
+            $count_admin = mysqli_num_rows($result_admin);
+            $count_employee = mysqli_num_rows($result_employee);
+            $count_user = mysqli_num_rows($result_user);
+
+            if ($count_admin == 1) {
+                $_SESSION['username'] = $username;
+                $_SESSION['accountID'] = $accountID;
+                return $username;
+            }
+            else if ($count_employee == 1) {
+                $_SESSION['username'] = $username;
+                $_SESSION['accountID'] = $accountID;
+                return $username;
+            }
+            else if ($count_user == 1) {
+                $_SESSION['username'] = $username;
+                $_SESSION['accountID'] = $accountID;
+                return $username;
+            }
+        }
+    }
+
+    //get account security question (forgot password)
+    function get_secQ($idNum, $qNum) {
+        global $con;
+
+        //get selected sq1 questionID
+        $query = "SELECT * FROM wt_secqa WHERE accountID = '$idNum'" ;
+        $result = mysqli_query($con, $query);
+        $row = mysqli_fetch_array($result);          
+        $selected = $row[$qNum];
+
+        //get selected sq1 question
+        $query_question = "SELECT * FROM wt_sqlist WHERE questionID = '$selected'";
+        $result_question = mysqli_query($con, $query_question);
+        $row_question = mysqli_fetch_array($result_question);
+        $selected_question = $row_question['question'];
+
+        return $selected_question;
+    }      
+
+    //verify answers (forgot password)
+    function verify_ans($a1, $a2, $secID){
+        global $con; 
+
+        $query = "SELECT * FROM wt_secqa WHERE secID = '$secID'";
+        $result = mysqli_query($con, $query);
+
+        if ($result) {
+            $row = mysqli_fetch_array($result);
+            if (strcasecmp($row['a1'], $a1)==0 && strcasecmp($row['a2'], $a2)==0) {
+                return 'correct';
+            }
+            else {
+                return 'incorret';
+            }
+        }
+    } 
+
+    //upload webtoon 
+    function insert_photo($title, $caption, $file_name, $final_file, $file_size, $file_type, 
+                                $illustrator, $datetimeUpload, $tags){
+        global $con;
+
+        $query = "INSERT INTO wt_webtoon(title, caption, fileName, fileContent, fileSize, fileType,
+                        illustrator, datetimeUpload, tags)"
+                    . "VALUES('$title', '$caption', '$file_name', '$final_file', '$file_size', '$file_type', 
+                                '$illustrator', '$datetimeUpload', '$tags')";
+        $result = mysqli_query($con, $query);
+        
+        if ($result) {
+            return true;
+        }
+        else {
+            echo mysqli_error($con);
+        }
+    }
+
+    //list webtoons
+    function list_webtoons() {
+        global $con;
+
+        $directory = '../../file_includes/uploads';
+        $allowed_types = array('jpg', 'jpeg', 'gif', 'png');
+        $file_parts = array();
+        $ext = '';
+        $title = '';
+        $i = 0;
+        $dir_handle = @opendir($directory) or die("Directory not found.");
+
+        $query = "SELECT * FROM wt_webtoon"; 
+
+        $result = mysqli_query($con, $query);
+
+        if($result) {
+            $i = 0;
+
+            while ($values = mysqli_fetch_array($result)) {
+                $title = $values['title'];
+                $caption = $values['caption'];
+                $file = $values['fileContent'];
+                $illustrator = $values['illustrator'];
+
+                if ($file=='.' || $file == '..') continue;                
+
+                $file_parts = explode('.',$file);
+                $ext = strtolower(array_pop($file_parts));
+                //$title = implode('.',$file_parts);
+                //$title = htmlspecialchars($title);
+                //$title = preg_replace('/[^a-zA-Z0-9\']/', ' ', "$title");  
+
+                if (in_array($ext, $allowed_types)) {
+                    echo ' Title: '.$title.' <a href="'.$directory.'/'.$file.'"><img  src="'.$directory.'/'.$file.'" height="50"/></a> Caption: '.$caption."<br>";
+                    $i++;
+                }
+            }
+            closedir($dir_handle);
+        }           
+    }
 ?>
+

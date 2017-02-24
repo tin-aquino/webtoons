@@ -20,7 +20,7 @@
 	<div id='menu'>
 		<ul>
 			<li><a href="profile.php">Profile</a></li>
-			<li><a href="webtoons.php">Webtoons</a></li>			
+			<li><a href="upload_webtoon.php">Webtoons</a></li>			
 			<li><a href="survey.php">Survey</a></li>			
 			<li><a href="../../controller/logout_controller.php">Logout</a></li>
 		</ul>

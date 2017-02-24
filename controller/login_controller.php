@@ -16,7 +16,7 @@
     else {
         if($count==1) { 
             //for inactive accounts  
-            if($_SESSION['mystatus'] == 'no'){
+            if($_SESSION['mystatus'] == 'inactive'){
                redirect("Account deactivated", "../index.php"); 
             }
             else {

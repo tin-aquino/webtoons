@@ -18,7 +18,7 @@
                 $uname = trim($_POST['addidnum']);
                 $pass = trim($_POST['addidnum'])+"dswdsoctech";                
                 $acctype = trim($_POST['addatype']);
-                $status = 'yes';
+                $status = 'active';
                 $setQ = 0; 
 
                 //password encryption: md5

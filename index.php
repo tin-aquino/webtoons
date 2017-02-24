@@ -19,6 +19,8 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<!-- RECAPTCHA -->
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	<title>Webtoons</title>
 </head>
 <body>
@@ -37,7 +39,7 @@
 		<!-- convert to modal-->
 		<div id='register'>
 			<h2>Register</h2>
-			<form action='controller/register_controller.php' method='POST'>
+			<form action='controller/add_user_controller.php' method='POST'>
 				Last Name: <input type='text' name='lname' placeholder='Last Name' required> <br>
 				First Name: <input type='text' name='fname' placeholder='First Name' required> <br>
 				Middle Name: <input type='text' name='mname' placeholder='Middle Name' required> <br>
@@ -55,7 +57,12 @@
 						<?php provincelist(); ?>
 					</select> <br>
 				Email: <input type='email' name='email' placeholder='someone@gmail.com' required> <br>
-				<input type='submit' value='Submit'>
+				Username: <input type='text' name='username' placeholder='Username' required> <br>
+				Password: <input type='text' name='password' placeholder='Password' required> <br>
+				<!-- RECAPTCHA -->
+				<div class="g-recaptcha" data-sitekey="6Lf57hAUAAAAAFcemwhoWxJKs611f0s25TunkbDG"></div>
+				<!-- END RECAPTCHA -->
+				<input type='submit' value='Submit' name='register'>
 			</form>
 		</div>
 	</div>
