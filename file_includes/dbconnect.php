@@ -1,7 +1,7 @@
 <?php
 
     define("DBSERVER" , "localhost");
-    define("DBUSER" , "root");
+    define("DBUSER" , "mire");
     define("DBPASS" , "sad123");
     define("DBNAME" , "capstone");
 

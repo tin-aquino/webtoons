@@ -1,0 +1,19 @@
+.btn-lg{
+	height: 50px;
+	width: 120px;
+}
+
+.jumbotron{
+	margin-top: -19px;
+	padding: 50px;
+
+}
+
+.container{
+	padding: 10px;
+}
+
+img{
+	width: 500px;
+	height: 500px;
+}
