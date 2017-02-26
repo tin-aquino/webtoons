@@ -12,6 +12,7 @@
     				$illustrator = trim($_POST['illustrator']);
     				$tags = trim($_POST['tags']);
     				$datetimeUpload = date("Y-m-d H:i:sa");
+                    $status = 1;
 
     				//upload file
 		            $file = rand(1000,100000)."-".$_FILES['file']['name'];
@@ -49,14 +50,14 @@
 
                     if($ok == 1){
                         $ip = insert_photo($title, $caption, $file_name, $final_file, $file_size, $file_type, 
-                                $illustrator, $datetimeUpload, $tags);
+                                $illustrator, $datetimeUpload, $tags, $status);
                         if($ip){
                         	//move to folder uploads
                     		move_uploaded_file($file_loc,$folder.$final_file);
                             redirect("Photo was successfully uploaded.", "../view/employee/upload_webtoon.php");                                
                         }
                         else{
-                            redirect("Photo was not successfully uploaded.", "../view/employee/upload_webtoon.php");                            
+                            //redirect("Photo was not successfully uploaded.", "../view/employee/upload_webtoon.php");                            
                         }
                     }
                     else{

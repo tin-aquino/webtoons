@@ -102,42 +102,15 @@
 		  	</div>
 		</div>
 
+		<div class="container">
+		<div class="row">
+			<?php list_webtoons(); ?>
+		</div>		
 		
-		<?php
-			global $con;
-
-			$query = "SELECT * FROM wt_webtoon WHERE status=1";
-			$result = mysqli_query($con, $query);
-
-			if($result) {
-            	$i = 0;
-
-            	while ($values = mysqli_fetch_array($result)) {
-	                $webtoonID = $values['webtoonID'];
-	                $title = $values['title'];
-	                $caption = $values['caption'];
-	                $file = $values['fileContent'];                
-	                $illustrator = $values['illustrator'];
-	    ?>
-		
-			
-				<div class="col-sm-6 col-md-4">
-			    	<div class="thumbnail">
-			      		<img src="../../file_includes/uploads/<?php echo $file; ?>" alt="...">
-			      		<div class="caption">
-					        <h3><?php echo $title; ?></h3>
-                            <p>by <?php echo $illustrator; ?></p>
-                            <p><?php echo $caption; ?> </p> 
-					        <p><a href='#' class='btn btn-default' role='button' data-toggle='modal' data-target='#myEditModal<?php echo $webtoonID; ?>'>Edit</a> 
-                            <a href='#' class='btn btn-danger' role='button' data-toggle='modal' data-target='#myDeleteModal<?php echo $webtoonID; ?>'>Delete</a></p>
-			      		</div>
-			   		</div>
-				</div>
-				
-		
+		</div>
 
 		<!--EDIT MODAL-->
-		<div class="modal fade" id="myEditModal<?php echo $webtoonID; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal fade" id="myEditModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		  	<div class="modal-dialog" role="document">
 		    	<div class="modal-content">
 		      		<div class="modal-header">
@@ -174,7 +147,7 @@
 		</div>
 
 		<!--DELETE MODAL-->
-		<div class="modal fade" id="myDeleteModal<?php echo $webtoonID; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal fade" id="myDeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		  	<div class="modal-dialog" role="document">
 		    	<div class="modal-content">
 		      		<div class="modal-header">
@@ -199,10 +172,5 @@
 		    	</div>
 		  	</div>
 		</div>
-
-		<?php
-				}
-			}
-		?>
 
 </body>

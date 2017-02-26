@@ -1164,13 +1164,13 @@
 
     //upload webtoon 
     function insert_photo($title, $caption, $file_name, $final_file, $file_size, $file_type, 
-                                $illustrator, $datetimeUpload, $tags){
+                                $illustrator, $datetimeUpload, $tags, $status){
         global $con;
 
         $query = "INSERT INTO wt_webtoon(title, caption, fileName, fileContent, fileSize, fileType,
-                        illustrator, datetimeUpload, tags)"
+                        illustrator, datetimeUpload, tags, status)"
                     . "VALUES('$title', '$caption', '$file_name', '$final_file', '$file_size', '$file_type', 
-                                '$illustrator', '$datetimeUpload', '$tags')";
+                                '$illustrator', '$datetimeUpload', '$tags', '$status')";
         $result = mysqli_query($con, $query);
         
         if ($result) {
@@ -1201,9 +1201,10 @@
             $i = 0;
 
             while ($values = mysqli_fetch_array($result)) {
+                $webtoonID = $values['webtoonID'];
                 $title = $values['title'];
                 $caption = $values['caption'];
-                $file = $values['fileContent'];
+                $file = $values['fileContent'];                
                 $illustrator = $values['illustrator'];
 
                 if ($file=='.' || $file == '..') continue;                
@@ -1214,13 +1215,40 @@
                 //$title = htmlspecialchars($title);
                 //$title = preg_replace('/[^a-zA-Z0-9\']/', ' ', "$title");  
 
-                if (in_array($ext, $allowed_types)) {
-                    echo ' Title: '.$title.' <a href="'.$directory.'/'.$file.'"><img  src="'.$directory.'/'.$file.'" height="50"/></a> Caption: '.$caption."<br>";
+                if (in_array($ext, $allowed_types)) {                                
+                    echo "<div class='col-sm-6 col-md-4'>
+                            <div class='thumbnail'>
+                                <img src=$directory/$file alt='...'>
+                                <div class='caption'>
+                                    <h3>$title</h3>
+                                    <p>by $illustrator</p>
+                                    <p>$caption</p>                                    
+                                    <p><a href='#' class='btn btn-default' role='button' data-toggle='modal' data-target='#myEditModal$webtoonID'>Edit</a> 
+                                    <a href='#' class='btn btn-danger' role='button' data-toggle='modal' data-target='#myDeleteModal$webtoonID'>Delete</a></p>
+                                </div>
+                            </div>
+                        </div>";
                     $i++;
                 }
             }
             closedir($dir_handle);
         }           
+    }
+
+    //get webtoon contents
+    function get_wt_details($id) {
+        global $con;
+
+        $query = "SELECT * FROM webtoon WHERE webtoonID =".$id."" ;
+        $result = mysqli_query($con, $query);
+        $row = mysqli_fetch_array($result);  
+
+        if (!$result) {
+            die("db error " . mysqli_error($con));
+        }
+
+        //echo $row["'".$field."'"];
+        return $row["".$field.""];
     }
 ?>
 
