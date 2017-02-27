@@ -7,7 +7,7 @@
     	$webtoonID = trim($_POST['webtoonID']);
 
     	delete_webtoon($webtoonID);
-    	redirect("Delete successful.", "../view/employee/upload_webtoon.php");   
+    	redirect("Delete successful.", "../view/employee/webtoons.php");   
     }
 
 ?>

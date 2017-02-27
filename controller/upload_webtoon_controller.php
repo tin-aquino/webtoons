@@ -31,9 +31,9 @@
                     $ok = 1;  
 
                     // size limit: 50MB max
-                    if ($file_size > 2000000){               
+                    if ($file_size > 50000000){               
                         $ok= 0;
-                        redirect("File too large", "../view/employee/upload_webtoon.php");                        
+                        redirect("File too large", "../view/employee/webtoons.php");                        
                     }
                     //limit type
                     else if(!($file_type == "image/jpeg" || 
@@ -42,7 +42,7 @@
                     	$file_type == "image/png")){  
 
                         $ok= 0;
-                        redirect("Image files only", "../view/employee/upload_webtoon.php");                        
+                        redirect("Image files only", "../view/employee/webtoons.php");                        
                     }
                     else {
                         $ok= 1;
@@ -54,23 +54,23 @@
                         if($ip){
                         	//move to folder uploads
                     		move_uploaded_file($file_loc,$folder.$final_file);
-                            redirect("Photo was successfully uploaded.", "../view/employee/upload_webtoon.php");                                
+                            redirect("Photo was successfully uploaded.", "../view/employee/webtoons.php");                                
                         }
                         else{
                             //redirect("Photo was not successfully uploaded.", "../view/employee/upload_webtoon.php");                            
                         }
                     }
                     else{
-                        redirect("There was an error uploading the photo", "../view/employee/upload_webtoon.php");                            
+                        redirect("There was an error uploading the photo", "../view/employee/webtoons.php");                            
                     }  
     			}    			   		
     		}
     		else {
-            	redirect("File cannot be read", "../view/employee/upload_webtoon.php");                            
+            	redirect("File cannot be read", "../view/employee/webtoons.php");                            
         	}
     	}
     	catch (Exception $ex) {
-            redirect("Error", "../view/employee/upload_webtoon.php");
+            redirect("Error", "../view/employee/webtoons.php");
         }
     }
 ?>
