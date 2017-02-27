@@ -118,6 +118,7 @@
 	                $caption = $values['caption'];
 	                $file = $values['fileContent'];                
 	                $illustrator = $values['illustrator'];
+	                $tags = $values['tags'];
 	    ?>
 		
 			
@@ -142,30 +143,31 @@
 		    	<div class="modal-content">
 		      		<div class="modal-header">
 				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				        <h4 class="modal-title" id="myModalLabel">Edit Webtoon: </h4>
+				        <h4 class="modal-title" id="myModalLabel">Edit Webtoon: <?php echo $title; ?> </h4>
 		      		</div>
 		      	<div class="modal-body">
-		        	<form action='controller/login_controller.php' method='POST'>
+		        	<form action='../../controller/update_webtoon_controller.php' method='POST'>
 		        		<div class="form-group">
 						    <label for="exampleInputEmail1">Title</label>
-						    <input type="text" class="form-control" name="title" id="exampleInputEmail1" placeholder="Title" required>
+						    <input type="text" class="form-control" name="title" id="exampleInputEmail1" value="<?php echo $title; ?>" required>
 						</div>
 						<div class="form-group">
 						    <label for="exampleInputEmail1">Caption</label>
-						    <textarea class="form-control" rows="3"></textarea>
+						    <textarea class="form-control" rows="3" name="caption"> <?php echo $caption; ?> </textarea>
 						</div>
 						<div class="form-group">
 						    <label for="exampleInputEmail1">Illustrator</label>
-						    <input type="text" class="form-control" name="username" id="exampleInputEmail1" placeholder="Username" required>
+						    <input type="text" class="form-control" name="illustrator" id="exampleInputEmail1" value="<?php echo $illustrator; ?>" required>
 						</div>
 						<div class="form-group">
 						    <label for="exampleInputEmail1">Tags</label>
-						    <textarea class="form-control" rows="3"></textarea>
+						    <textarea class="form-control" rows="3" name="tags"> <?php echo $tags; ?> </textarea>
 						</div>
 						<div class="form-group"></div>
-						<button type='submit' class="btn btn-default" name='login' value='Upload'>
-						Edit
-						</button>
+						<input type = 'hidden' name = 'webtoonID' value = '<?php echo $webtoonID; ?>'>
+						<button type='submit' class="btn btn-default" name='edit_webtoon' value='Upload'>
+						Submit
+						</button>						
 						</div>	
 					</form>
 		      	</div>
@@ -179,18 +181,19 @@
 		    	<div class="modal-content">
 		      		<div class="modal-header">
 				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				        <h4 class="modal-title" id="myModalLabel">Delete Webtoon</h4>
+				        <h4 class="modal-title" id="myModalLabel">Delete Webtoon: <?php echo $title; ?> </h4>
 		      		</div>
 		      	<div class="modal-body">
-		        	<form action='controller/login_controller.php' method='POST'>
+		        	<form action='../../controller/delete_webtoon_controller.php' method='POST'>
 		        		<blockquote>
-		        			<p>Are you sure you want to delete the webtoon?</p>
+		        			<p>Are you sure you want to delete <?php echo $title; ?> ? </p>
 		        		</blockquote>
 						<div class="form-group"></div>
-						<button type='submit' class="btn btn-primary" name='login' value='Upload'>
+						<input type = 'hidden' name = 'webtoonID' value = '<?php echo $webtoonID; ?>'>
+						<button type='submit' class="btn btn-primary" name='delete_webtoon'>
 						Yes
 						</button>
-						<button type='submit' class="btn btn-danger" name='login' value='Upload'>
+						<button type='button' class="btn btn-danger" data-dismiss="modal">
 						No
 						</button>
 						</div>	

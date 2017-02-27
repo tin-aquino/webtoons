@@ -1181,6 +1181,7 @@
         }
     }
 
+    /* 
     //list webtoons
     function list_webtoons() {
         global $con;
@@ -1249,6 +1250,29 @@
 
         //echo $row["'".$field."'"];
         return $row["".$field.""];
+    } */
+
+    //update webtoon
+    function update_webtoon($webtoonID, $title, $caption, $illustrator, $tags) {
+        global $con; 
+
+        $query_title = "UPDATE wt_webtoon SET title='$title' WHERE webtoonID = '$webtoonID'" ;
+        $query_caption = "UPDATE wt_webtoon SET caption='$caption' WHERE webtoonID = '$webtoonID'" ;
+        $query_illustrator = "UPDATE wt_webtoon SET illustrator='$illustrator' WHERE webtoonID = '$webtoonID'" ;
+        $query_tags = "UPDATE wt_webtoon SET tags='$tags' WHERE webtoonID = '$webtoonID'" ;
+
+        $result_title = mysqli_query($con, $query_title);
+        $result_caption = mysqli_query($con, $query_caption);
+        $result_illustrator = mysqli_query($con, $query_illustrator);
+        $result_tags = mysqli_query($con, $query_tags);       
+    }
+
+    //delete webtoon
+    function delete_webtoon($webtoonID) {
+        global $con; 
+
+        $query = "UPDATE wt_webtoon SET status=0 WHERE webtoonID = '$webtoonID'" ;
+        $result = mysqli_query($con, $query);
     }
 ?>
 
