@@ -21,7 +21,7 @@
 		<ul>
 			<li><a href="profile.php">Profile</a></li>
 			<li><a href="">Favorites</a></li>			
-			<li><a href="">Webtoons List</a></li>			
+			<li><a href="webtoons.php">Webtoons</a></li>			
 			<li><a href="../../controller/logout_controller.php">Logout</a></li>
 		</ul>
 	</div>

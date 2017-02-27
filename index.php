@@ -260,7 +260,10 @@
 
 	<div class="container">
 	<div class="row">
-		  <?php list_webtoons(); ?>
+			<?php 
+				$directory = 'file_includes/uploads';
+				list_webtoons($directory); 
+			?>
 	</div>
 	</div>
 	

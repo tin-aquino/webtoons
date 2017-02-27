@@ -1183,10 +1183,9 @@
 
     
     //list webtoons
-    function list_webtoons() {
+    function list_webtoons($directory) {
         global $con;
-
-        $directory = 'file_includes/uploads';
+        
         $allowed_types = array('jpg', 'jpeg', 'gif', 'png');
         $file_parts = array();
         $ext = '';
