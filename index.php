@@ -150,8 +150,8 @@
 						    <input type="text" name="mname" class="form-control"  id="exampleInputEmail1" placeholder="Middle Name" required>
 						</div>
 						<div class="form-group">
-						    <label for="exampleInputEmail1">First Name</label>
-						    <input type="date" name="sex" class="form-control"  id="exampleInputEmail1"  required>
+						    <label for="exampleInputEmail1">Birthday</label>
+						    <input type="date" name="bday" class="form-control"  id="exampleInputEmail1"  required>
 						</div>
 						<div class="form-group">
 						    <label for="exampleInputEmail1">Sex</label>
