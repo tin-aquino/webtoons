@@ -2,7 +2,7 @@
 
     define("DBSERVER" , "localhost");
     define("DBUSER" , "root");
-    define("DBPASS" , "sad123");
+    define("DBPASS" , "");
     define("DBNAME" , "capstone");
 
     global $con;

@@ -1181,12 +1181,12 @@
         }
     }
 
-    /* 
+    
     //list webtoons
     function list_webtoons() {
         global $con;
 
-        $directory = '../../file_includes/uploads';
+        $directory = 'file_includes/uploads';
         $allowed_types = array('jpg', 'jpeg', 'gif', 'png');
         $file_parts = array();
         $ext = '';
@@ -1223,9 +1223,7 @@
                                 <div class='caption'>
                                     <h3>$title</h3>
                                     <p>by $illustrator</p>
-                                    <p>$caption</p>                                    
-                                    <p><a href='#' class='btn btn-default' role='button' data-toggle='modal' data-target='#myEditModal$webtoonID'>Edit</a> 
-                                    <a href='#' class='btn btn-danger' role='button' data-toggle='modal' data-target='#myDeleteModal$webtoonID'>Delete</a></p>
+                                    <p>$caption</p>                                                                        
                                 </div>
                             </div>
                         </div>";
@@ -1250,7 +1248,7 @@
 
         //echo $row["'".$field."'"];
         return $row["".$field.""];
-    } */
+    } 
 
     //update webtoon
     function update_webtoon($webtoonID, $title, $caption, $illustrator, $tags) {

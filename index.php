@@ -260,41 +260,7 @@
 
 	<div class="container">
 	<div class="row">
-		  <div class="col-sm-6 col-md-4">
-		    	<div class="thumbnail">
-		      		<img src="file_includes/images/1.jpg" alt="...">
-		      		<div class="caption">
-				        <h3>Thumbnail label</h3>
-				        <p>...</p>
-				        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-		      		</div>
-		   		</div>
-		  </div>
-	
-	
-	
-		  <div class="col-sm-6 col-md-4">
-		    	<div class="thumbnail">
-		      		<img src="view/images/2.jpg" alt="...">
-		      		<div class="caption">
-				        <h3>Thumbnail label</h3>
-				        <p>...</p>
-				        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-		      		</div>
-		   		</div>
-		  </div>
-	
-	
-		  <div class="col-sm-6 col-md-4">
-		    	<div class="thumbnail">
-		      		<img src="view/images/3.jpg" alt="...">
-		      		<div class="caption">
-				        <h3>Thumbnail label</h3>
-				        <p>...</p>
-				        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-		      		</div>
-		   		</div>
-		  </div>
+		  <?php list_webtoons(); ?>
 	</div>
 	</div>
 	
