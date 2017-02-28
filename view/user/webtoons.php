@@ -39,12 +39,22 @@
 		    </div>
 	  		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      	<ul class="nav navbar-nav">
-		      		<li><a href="userhome.php">Profile</a></li>
-		      		<li><a href="">Favorites</a></li>	
-					<li><a href="webtoons.php">Webtoons</a></li>										
+		      		<li><a href="userhome.php">Home</a></li>
+					<li><a href="#">Favorites</a></li>			
+					<li><a href="webtoons.php">Webtoon</a></li>			
 		        </ul>
 		        <ul class="nav navbar-nav navbar-right">
-		        	<li><a href="../../controller/logout_controller.php">Logout</a></li>
+		        	<li class="dropdown">
+		        		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Account <span class="caret"></span></a>
+				        <ul class="dropdown-menu">
+				            <li><a href="#" data-toggle="modal" data-target="#myUpdateAccount">Update Account Information</a></li>
+				            <li><a href="#" data-toggle="modal" data-target="#myUpdateSecurityQ">Update Security Questions</a></li>
+				            <li><a href="#" data-toggle="modal" data-target="#myUpdatePassword">Update Password</a></li>
+				            <li role="separator" class="divider"></li>
+				            <li><a href="../../controller/logout_controller.php">Logout</a></li>
+				        </ul>
+				    </li>
+		        	<!--<li><a href="../../controller/logout_controller.php">Logout</a></li>-->
 		        </ul>
 		    </div>   	
 		</nav>

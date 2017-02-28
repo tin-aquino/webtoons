@@ -56,10 +56,45 @@
 			<li><a href="../../controller/logout_controller.php">Logout</a></li>
 		</ul>
 	</div>-->
+	<div id='content' class="container">
+		<div id="table-container" class="center-block">
 
-	<div id='content'>
-		<h4>EMPLOYEE PROFILE.PHP</h4>
-		<table>
+			
+		
+		<h1>Welcome, <?php echo get_field('fname', 'wt_employee', $_SESSION['myID']);?></h1>
+		<!--<table>-->
+		<form class="form-horizontal">
+			<div class="form-group">
+			    <label class="col-sm-2 control-label">ID Number</label>
+			    <div class="col-sm-10">
+			      <p class="form-control-static"><?php echo get_field('idnum', 'wt_employee', $_SESSION['myID']);?></p>
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label class="col-sm-2 control-label">Last Name</label>
+			    <div class="col-sm-10">
+			      <p class="form-control-static"><?php echo get_field('lname', 'wt_employee', $_SESSION['myID']);?></p>
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label class="col-sm-2 control-label">First Name</label>
+			    <div class="col-sm-10">
+			      <p class="form-control-static"><?php echo get_field('fname', 'wt_employee', $_SESSION['myID']);?></p>
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label class="col-sm-2 control-label">Middle Name</label>
+			    <div class="col-sm-10">
+			      <p class="form-control-static"><?php echo get_field('mname', 'wt_employee', $_SESSION['myID']);?></p>
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label class="col-sm-2 control-label">E-mail</label>
+			    <div class="col-sm-10">
+			      <p class="form-control-static"><?php echo get_field('email', 'wt_employee', $_SESSION['myID']);?></p>
+			    </div>
+			</div>
+			<!--
 			<tr>
 				<td>ID Number: </td>
 				<td><?php echo get_field('idnum', 'wt_employee', $_SESSION['myID']);?></td>
@@ -79,8 +114,10 @@
 			<tr>
 				<td>E-mail: </td>
 				<td><?php echo get_field('email', 'wt_employee', $_SESSION['myID']);?></td>
-			</tr>
-		</table>
+			</tr>-->
+		</form>	
+		<!--</table>-->
+		</div>
 	</div>
 
 	<!--convert to modal-->

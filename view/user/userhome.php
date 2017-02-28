@@ -215,7 +215,7 @@
 			<h1>Welcome, User!</h1>
 			<p>Below are the featured webtoons!</p>
 			<p>
-			    <a href="userwebtoons.html" role="button" class="btn btn-primary btn-lg">View All</a>
+			    <a href="webtoons.php" role="button" class="btn btn-primary btn-lg">View All</a>
 			</p>
 		</div>
 		<div class="container">
