@@ -39,22 +39,22 @@
 		    </div>
 	  		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      	<ul class="nav navbar-nav">
-		      		<li><a href="profile.php">Profile</a></li>
-					<li><a href="webtoons.php">Webtoons</a></li>			
-					<li><a href="survey.php">Survey</a></li>			
+		      		<li><a href="userhome.php">Home</a></li>
+					<li><a href="#">Favorites</a></li>			
+					<li><a href="webtoons.php">Webtoon</a></li>			
 		        </ul>
 		        <ul class="nav navbar-nav navbar-right">
 		        	<li class="dropdown">
-		        		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+		        		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Account <span class="caret"></span></a>
 				        <ul class="dropdown-menu">
-				            <li><a href="#" data-toggle="modal" data-target="#myUpdateAccount">Action</a></li>
-				            <li><a href="#" data-toggle="modal" data-target="#myUpdateSecurityQ">Another action</a></li>
-				            <li><a href="#">Something else here</a></li>
+				            <li><a href="#" data-toggle="modal" data-target="#myUpdateAccount">Update Account Information</a></li>
+				            <li><a href="#" data-toggle="modal" data-target="#myUpdateSecurityQ">Update Security Questions</a></li>
+				            <li><a href="#" data-toggle="modal" data-target="#myUpdatePassword">Update Password</a></li>
 				            <li role="separator" class="divider"></li>
-				            <li><a href="#">Separated link</a></li>
+				            <li><a href="../../controller/logout_controller.php">Logout</a></li>
 				        </ul>
 				    </li>
-		        	<li><a href="../../controller/logout_controller.php">Logout</a></li>
+		        	<!--<li><a href="../../controller/logout_controller.php">Logout</a></li>-->
 		        </ul>
 		    </div>   	
 		</nav>
@@ -138,18 +138,30 @@
 				        <h4 class="modal-title" id="myModalLabel">Update Security Questions</h4>
 		      		</div>
 		      	<div class="modal-body">
-		        	<form action='controller/login_controller.php' method='POST'>
+		        	<form action='../../controller/update_sq_controller.php' method='POST'>
 						<div class="form-group">
 							<label for="exampleInputEmail1">Security Question 1</label>
 							<select class="form-control" name="sq1">
-								<option value=''>--Choose a question--</option>
+								<?php 
+								get_secQ1($_SESSION['myID']);
+							?>
 							</select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail1">Answer 1</label>
+						    <input type="text" class="form-control" name="a1" id="exampleInputEmail1" value = "<?php echo get_field('a1', 'wt_secqa', $_SESSION['myID']);?>" required>
 						</div>
 						<div class="form-group">
 							<label for="exampleInputEmail1">Security Question 2</label>
 							<select class="form-control" name="sq2">
-								<option value=''>--Choose a question--</option>
+								<?php 
+								get_secQ2($_SESSION['myID']);
+							?>
 							</select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail1">Answer 1</label>
+						    <input type="text" class="form-control" name="a2" id="exampleInputEmail1" value = "<?php echo get_field('a2', 'wt_secqa', $_SESSION['myID']);?>" required>
 						</div>
 						<div class="form-group">
 						    <label for="exampleInputPassword1">Password</label>
@@ -166,6 +178,38 @@
 		  	</div>
 		</div>
 
+		<!--UPDATE PASSWORD-->
+		<div class="modal fade" id="myUpdatePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  	<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">Update Security Questions</h4>
+		      		</div>
+		      	<div class="modal-body">
+		        	<form action='../../controller/update_password_controller.php' method='POST'>
+						<div class="form-group">
+						    <label for="exampleInputPassword1">Old Password</label>
+						    <input type="password" name="oldpass" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputPassword1">New Password</label>
+						    <input type="password" name="newpass1" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputPassword1">Re-type New Password</label>
+						    <input type="password" name="newpass2" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+						</div>
+						<div class="form-group">
+						<button type='submit' class="btn btn-default" name='change_pass' value='Update'>
+						Update
+						</button>
+						</div>
+					</form>
+		      	</div>
+		    	</div>
+		  	</div>
+		</div>
 
 		<div class="jumbotron" id="jumbotron">
 			<h1>Welcome, User!</h1>
@@ -174,6 +218,7 @@
 			    <a href="userwebtoons.html" role="button" class="btn btn-primary btn-lg">View All</a>
 			</p>
 		</div>
+		<div class="container">
 		<div class="row">
 			  <div class="col-sm-6 col-md-4">
 			    	<div class="thumbnail">
@@ -204,6 +249,7 @@
 			      		</div>
 			   		</div>
 			  </div>
+		</div>
 		</div>
 </body>
 </html>

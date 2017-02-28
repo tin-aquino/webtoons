@@ -39,7 +39,7 @@
 		    </div>
 	  		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      	<ul class="nav navbar-nav">
-		      		<li><a href="profile.php">Profile</a></li>
+		      		<li><a href="userhome.php">Profile</a></li>
 		      		<li><a href="">Favorites</a></li>	
 					<li><a href="webtoons.php">Webtoons</a></li>										
 		        </ul>
