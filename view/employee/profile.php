@@ -57,10 +57,6 @@
 		</ul>
 	</div>-->
 	<div id='content' class="container">
-		<div id="table-container" class="center-block">
-
-			
-		
 		<h1>Welcome, <?php echo get_field('fname', 'wt_employee', $_SESSION['myID']);?></h1>
 		<!--<table>-->
 		<form class="form-horizontal">
@@ -117,10 +113,61 @@
 			</tr>-->
 		</form>	
 		<!--</table>-->
-		</div>
+	</div>
+	<div class="row">
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myUpdateAccount">
+		  Update Account Information
+		</button>
+
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+		  Launch demo modal
+		</button>
+
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+		  Launch demo modal
+		</button>
 	</div>
 
-	<!--convert to modal-->
+	<div class="modal fade" id="myUpdateAccount" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  	<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">Login</h4>
+		      		</div>
+		      	<div class="modal-body">
+		        	<form action='../../controller/update_account_controller.php' method='POST'>
+		        		<div class="form-group">
+						    <label for="exampleInputEmail1">ID Number</label>
+						    <input type="text" class="form-control" id="exampleInputEmail1" value="<?php echo get_field('idnum', 'wt_employee', $_SESSION['myID']);?>" disabled>
+						</div>
+		        		<div class="form-group">
+						    <label for="exampleInputEmail1">Last Name</label>
+						    <input type="text" class="form-control" name="elname" id="exampleInputEmail1" value="<?php echo get_field('lname', 'wt_employee', $_SESSION['myID']);?>">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail1">First Name</label>
+						    <input type="text" class="form-control" name="efname" id="exampleInputEmail1" value="<?php echo get_field('fname', 'wt_employee', $_SESSION['myID']);?>">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail1">Middle Name</label>
+						    <input type="text" class="form-control" name="emname" id="exampleInputEmail1" value="<?php echo get_field('mname', 'wt_employee', $_SESSION['myID']);?>">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail1">Email address</label>
+						    <input type="email" name="eemail" class="form-control" id="exampleInputEmail1" value="<?php echo get_field('email', 'wt_employee', $_SESSION['myID']);?>">
+						</div>
+						<div class="form-group">
+						<button type='submit' class="btn btn-default" name='update_account' value='Update'>
+						Update Account
+						</button>
+						</div>
+					</form>
+		      	</div>
+		    	</div>
+		  	</div>
+		</div>
+	<!--convert to modal
 	<div ='update_info'>
 		<h4>Update Account Information</h4>
 		<form action="../../controller/update_account_controller.php" method="POST">
@@ -151,7 +198,7 @@
 			</table>
 		</form>
 	</div>
-
+	-->
 	<!--convert to modal-->
 	<div ='update_sq'>
 		<h4>Update Security Questions</h4>
