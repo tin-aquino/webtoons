@@ -74,19 +74,20 @@
 						</div>
 						<div class="form-group">
 						    <label for="exampleInputEmail1">First Name</label>
-						    <input type="text" class="form-control" name="fname" id="exampleInputEmail1" placeholder="First Name" required>
+						    <input type="text" class="form-control" name="fname" id="exampleInputEmail1" value="<?php echo get_field('fname', 'wt_user', $_SESSION['myID']);?>" required>
 						</div>
 						<div class="form-group">
 						    <label for="exampleInputEmail1">Middle Name</label>
-						    <input type="text" class="form-control" name="mname" id="exampleInputEmail1" placeholder="Middle Name" required>
+						    <input type="text" class="form-control" name="mname" id="exampleInputEmail1" value="<?php echo get_field('mname', 'wt_user', $_SESSION['myID']);?>" required>
 						</div>
 						<div class="form-group">
 						    <label for="exampleInputEmail1">Birthday</label>
-						    <input type="date" class="form-control" name="bday" id="exampleInputEmail1" placeholder="Birthday" required>
+						    <input type="date" class="form-control" name="bday" id="exampleInputEmail1" value="<?php echo get_field('birthday', 'wt_user', $_SESSION['myID']);?>" required>
 						</div>
 						<div class="form-group">
 						    <label for="exampleInputEmail1">Sex</label>
-						    <div class="radio">
+						    <?php get_sex($_SESSION['myID']); ?>
+						    <!--<div class="radio">
 							    <label>
 							    <input type="radio" name="sex" id="optionsRadios1" value="M"> Male
 							    </label>
@@ -95,28 +96,30 @@
 							    <label>
 							    <input type="radio" name="sex" id="optionsRadios1" value="F"> Female
 							    </label>
-						    </div>
+						    </div>-->
 						</div>
 						<div class="form-group">
 							<label for="exampleInputEmail1">City</label>
 							<select class="form-control" name="city">
-								<option value=''>--Choose a city--</option>
-								<?php citylist(); ?>
+								<?php get_city($_SESSION['myID']);
+								citylist();
+							?>
 							</select>
 						</div>
 						<div class="form-group">
 							<label for="exampleInputEmail1">Province</label>
 							<select class="form-control" name="province">
-								<option value=''>--Choose a province--</option>
-								<?php provincelist(); ?>
+								<?php get_province($_SESSION['myID']);
+								provincelist();
+							?>
 							</select>
 						</div>
 						<div class="form-group">
 						    <label for="exampleInputEmail1">Email address</label>
-						    <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="someone@email.com" required>
+						    <input type="email" name="email" class="form-control" id="exampleInputEmail1" value="<?php echo get_field('email', 'wt_user', $_SESSION['myID']);?>" required>
 						</div>
 						<div class="form-group">
-						<button type='submit' class="btn btn-default" name='update_account' value='Update Account'>
+						<button type='submit' class="btn btn-default" name='update_account' value='Update'>
 						Update Account
 						</button>
 						</div>
