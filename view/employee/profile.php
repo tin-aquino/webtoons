@@ -119,12 +119,12 @@
 		  Update Account Information
 		</button>
 
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-		  Launch demo modal
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myUpdateSecurityQ">
+		  Update Security Questions
 		</button>
 
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-		  Launch demo modal
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myUpdatePassword">
+		  Update Password
 		</button>
 	</div>
 
@@ -199,7 +199,57 @@
 		</form>
 	</div>
 	-->
-	<!--convert to modal-->
+
+	<!--UPDATE SECURITY QUESTIONS-->
+		<div class="modal fade" id="myUpdateSecurityQ" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  	<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">Update Security Questions</h4>
+		      		</div>
+		      	<div class="modal-body">
+		        	<form action='../../controller/update_sq_controller.php' method='POST'>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Security Question 1</label>
+							<select class="form-control" name="sq1">
+								<?php 
+								get_secQ1($_SESSION['myID']);
+							?>
+							</select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail1">Answer 1</label>
+						    <input type="text" class="form-control" name="a1" id="exampleInputEmail1" value = "<?php echo get_field('a1', 'wt_secqa', $_SESSION['myID']);?>" required>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Security Question 2</label>
+							<select class="form-control" name="sq2">
+								<?php 
+								get_secQ2($_SESSION['myID']);
+							?>
+							</select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail1">Answer 1</label>
+						    <input type="text" class="form-control" name="a2" id="exampleInputEmail1" value = "<?php echo get_field('a2', 'wt_secqa', $_SESSION['myID']);?>" required>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputPassword1">Password</label>
+						    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+						</div>
+						<div class="form-group">
+						<button type='submit' class="btn btn-default" name='update_sq' value='Update'>
+						Update
+						</button>
+						</div>
+					</form>
+		      	</div>
+		    	</div>
+		  	</div>
+		</div>
+
+	<!--convert to modal
 	<div ='update_sq'>
 		<h4>Update Security Questions</h4>
 		<form action="../../controller/update_sq_controller.php" method="POST">
@@ -238,8 +288,43 @@
 			</table>
 		</form>
 	</div>
+	-->
 
-	<!-- convert to modal -->
+	<!--UPDATE PASSWORD-->
+		<div class="modal fade" id="myUpdatePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  	<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">Update Security Questions</h4>
+		      		</div>
+		      	<div class="modal-body">
+		        	<form action='../../controller/update_password_controller.php' method='POST'>
+						<div class="form-group">
+						    <label for="exampleInputPassword1">Old Password</label>
+						    <input type="password" name="oldpass" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputPassword1">New Password</label>
+						    <input type="password" name="newpass1" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputPassword1">Re-type New Password</label>
+						    <input type="password" name="newpass2" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+						</div>
+						<div class="form-group">
+						<button type='submit' class="btn btn-default" name='change_pass' value='Update'>
+						Update
+						</button>
+						</div>
+					</form>
+		      	</div>
+		    	</div>
+		  	</div>
+		</div>
+	<!-- convert to modal 
+
+
 	<div id='change_pass'>
 		<h4>Change Password</h4>
 		<form action="../../controller/update_password_controller.php" method="POST">
@@ -261,6 +346,6 @@
 				</tr>
 			</table>
 		</form>
-	</div>
+	</div>-->
 </body>
 </html>
