@@ -29,11 +29,11 @@
                 $email = trim($_POST['eemail']);
 
                 if (($lname==null) || ($fname==null) || ($mname==null) || ($email==null)) {
-                    redirect("Kindly input all fields.", "../view/employee/profile.php");
+                    redirect("Kindly input all fields.", "../view/employee/index.php");
                 }
                 else {
                     update_employee_profile($_SESSION['myID'], $lname, $fname, $mname, $email);
-                    redirect("Update successful.", "../view/employee/profile.php");
+                    redirect("Update successful.", "../view/employee/index.php");
                 }
             }
             else if ($type == 'user') {

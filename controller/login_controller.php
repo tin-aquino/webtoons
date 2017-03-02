@@ -52,7 +52,7 @@
                     else {
                         $employee_cookie= setcookie('loggedin_employee', date("F jS - g:i a"), 0, "/");
                         if ($employee_cookie) {
-                            header ('location: ../view/employee/profile.php');   
+                            header ('location: ../view/employee/index.php');   
                         }
                     }
                 }

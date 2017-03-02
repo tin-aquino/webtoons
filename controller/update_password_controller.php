@@ -26,17 +26,17 @@
     		}
             else if ($type == 'employee') {
                 if (($_POST['oldpass'] == null) || ($_POST['newpass1']==null) || ($_POST['newpass2']==null)) {
-                    redirect("Kindly input all fields.", "../view/employee/profile.php");
+                    redirect("Kindly input all fields.", "../view/employee/index.php");
                 }
                 else if ($curr_pass != md5($_POST['oldpass'])) {
-                    redirect("Incorrect password.", "../view/employee/profile.php");
+                    redirect("Incorrect password.", "../view/employee/index.php");
                 }
                 elseif (strcmp ($_POST['newpass1'], $_POST['newpass2'])) {
-                    redirect("Passwords don't match.", "../view/employee/profile.php");
+                    redirect("Passwords don't match.", "../view/employee/index.php");
                 }
                 else {
                     update_password($_SESSION['myID'], $type);
-                    redirect("Password successfully changed.", "../view/employee/profile.php");
+                    redirect("Password successfully changed.", "../view/employee/index.php");
                 }
             }
             else if ($type == 'user') {

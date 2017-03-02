@@ -12,10 +12,10 @@
 
     	if (!($title == null) && !($caption == null) && !($illustrator == null) && !($tags == null)) {
     		update_webtoon($webtoonID, $title, $caption, $illustrator, $tags);     
-            redirect("Update successful.", "../view/employee/webtoons.php");   
+            redirect("Update successful.", "../view/employee/index.php");   
     	}
     	else {
-    		redirect("Kindly input all fields.", "../view/employee/webtoons.php");                      
+    		redirect("Kindly input all fields.", "../view/employee/index.php");                      
     	}
     }
 ?>

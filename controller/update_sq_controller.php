@@ -29,14 +29,14 @@
     		}
             else if ($type == 'employee') {
                 if (($sq1 == null) || ($a1 == null) || ($sq2 == null) || ($a2 == null) || ($pass == null)) {
-                    redirect("Kindly input all fields.", "../view/employee/profile.php");
+                    redirect("Kindly input all fields.", "../view/employee/index.php");
                 }
                 else if ($curr_pass != md5($_POST['password'])) {
-                    redirect("Incorrect password.", "../view/employee/profile.php");
+                    redirect("Incorrect password.", "../view/employee/index.php");
                 }
                 else {
                     update_sq($_SESSION['myID'], $sq1, $a1, $sq2, $a2);
-                    redirect("Update successful.", "../view/employee/profile.php");
+                    redirect("Update successful.", "../view/employee/index.php");
                 }
             }
             else if ($type == 'user') {

@@ -38,10 +38,9 @@
 		      	<a class="navbar-brand" href="#">Brand</a>
 		    </div>
 	  		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		      	<ul class="nav navbar-nav">
-		      		<li><a href="profile.php">Profile</a></li>
-					<li><a href="webtoons.php">Webtoons</a></li>			
-					<li><a href="survey.php">Survey</a></li>			
+		      	<ul class="nav navbar-nav">		      		
+					<li><a href="index.php">Webtoons</a></li>			
+					<li><a href="summary.php">Summary</a></li>			
 		        </ul>
 		        <ul class="nav navbar-nav navbar-right">
 		        	<li><a href="../../controller/logout_controller.php">Logout</a></li>

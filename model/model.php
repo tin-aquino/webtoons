@@ -1193,7 +1193,7 @@
         $i = 0;
         $dir_handle = @opendir($directory) or die("Directory not found.");
 
-        $query = "SELECT * FROM wt_webtoon"; 
+        $query = "SELECT * FROM wt_webtoon WHERE status=1"; 
 
         $result = mysqli_query($con, $query);
 
