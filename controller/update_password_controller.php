@@ -41,17 +41,17 @@
             }
             else if ($type == 'user') {
                 if (($_POST['oldpass'] == null) || ($_POST['newpass1']==null) || ($_POST['newpass2']==null)) {
-                    redirect("Kindly input all fields.", "../view/user/profile.php");
+                    redirect("Kindly input all fields.", "../view/user/index.php");
                 }
                 else if ($curr_pass != md5($_POST['oldpass'])) {
-                    redirect("Incorrect password.", "../view/user/profile.php");
+                    redirect("Incorrect password.", "../view/user/index.php");
                 }
                 elseif (strcmp ($_POST['newpass1'], $_POST['newpass2'])) {
-                    redirect("Passwords don't match.", "../view/user/profile.php");
+                    redirect("Passwords don't match.", "../view/user/index.php");
                 }
                 else {
                     update_password($_SESSION['myID'], $type);
-                    redirect("Password successfully changed.", "../view/user/profile.php");
+                    redirect("Password successfully changed.", "../view/user/index.php");
                 }
             }
     	}

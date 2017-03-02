@@ -40,7 +40,7 @@
                     else {
                         $user_cookie= setcookie('loggedin_user', date("F jS - g:i a"), 0, "/");
                         if ($user_cookie) {
-                            header ('location: ../view/user/userhome.php');   
+                            header ('location: ../view/user/index.php');   
                         }
                     }
                 }

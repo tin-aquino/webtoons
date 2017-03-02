@@ -48,11 +48,11 @@
 
                 if (($lname == null) || ($fname==null) || ($mname==null) || ($bday==null) || 
                     ($sex==null) || ($city==null) || ($province==null) || ($province==null)) {
-                    redirect("Kindly input all fields.", "../view/user/profile.php");
+                    redirect("Kindly input all fields.", "../view/user/index.php");
                 }
                 else {
                     update_user_profile($_SESSION['myID'], $lname, $fname, $mname, $bday, $sex, $city, $province, $email);
-                    redirect("Update successful.", "../view/user/profile.php");                    
+                    redirect("Update successful.", "../view/user/index.php");                    
                 }
             }
     	}
