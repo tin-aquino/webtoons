@@ -50,7 +50,6 @@
   		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      	<ul class="nav navbar-nav">
 	      		<li><a href="index.php">Home</a></li>
-				<li><a href="view/about.php">About</a></li>
 				<li><a href="view/wt_list.php">Webtoons List</a></li>
 	        </ul>
 	    </div>   	
@@ -260,10 +259,7 @@
 
 	<div class="container">
 	<div class="row">
-			<?php 
-				$directory = 'file_includes/uploads';
-				list_webtoons($directory); 
-			?>
+			
 	</div>
 	</div>
 	
