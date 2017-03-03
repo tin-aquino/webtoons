@@ -1216,7 +1216,7 @@
                 //$title = preg_replace('/[^a-zA-Z0-9\']/', ' ', "$title");  
 
                 if (in_array($ext, $allowed_types)) {                                
-                    echo "<div class='col-sm-6 col-md-4'>
+                    echo "<a href='../user/view_toons.php?webtoon=$webtoonID'><div class='col-sm-6 col-md-4'>
                             <div class='thumbnail'>
                                 <img src=$directory/$file alt='...'>
                                 <div class='caption'>
@@ -1225,7 +1225,7 @@
                                     <p>$caption</p>                                                                        
                                 </div>
                             </div>
-                        </div>";
+                        </div></a>";
                     $i++;
                 }
             }

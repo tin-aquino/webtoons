@@ -219,10 +219,17 @@
 			</p>
 		</div>
 		<div class="container">
+		<?php
+			
+
+
+
+
+		?>
 		<div class="row">
 			  <div class="col-sm-6 col-md-4">
 			    	<div class="thumbnail">
-			      		<a href="../../file_includes/images/1.jpg"><img src="../../file_includes/images/1.jpg" alt="..."></a>
+			      		<a href="view_webtoon.php?webtoon_id=#"><img src="../../file_includes/images/1.jpg" alt="..."></a>
 			      		<div class="caption">
 					        <h3>Thumbnail label</h3>
 					        <p>...</p>
