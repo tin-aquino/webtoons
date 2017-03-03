@@ -2,15 +2,18 @@
 	require("../file_includes/dbconnect.php");
     require("../model/model.php");
 
+    global $con;
+
     if (isset($_POST['upload_webtoon'])) {
     	try {
     		if ($_FILES['file']['size']>0) {
-    			if(!($_POST['title']== null) && !($_POST['caption']== null) && !($_POST['illustrator']== null) && !($_POST['tags']== null)) {
+    			if(!($_POST['title']== null) && !($_POST['caption']== null) && !($_POST['illustrator']== null) && !($_POST['question']== null) && !($_POST['tags']== null)) {
 
-    				$title = trim($_POST['title']);
-    				$caption = trim($_POST['caption']);
-    				$illustrator = trim($_POST['illustrator']);
-    				$tags = trim($_POST['tags']);
+    				$title = mysqli_real_escape_string($con,trim($_POST['title']));
+    				$caption = mysqli_real_escape_string($con,trim($_POST['caption']));
+    				$illustrator = mysqli_real_escape_string($con,trim($_POST['illustrator']));
+                    $question = mysqli_real_escape_string($con,trim($_POST['question']));
+    				$tags = mysqli_real_escape_string($con,trim($_POST['tags']));
     				$datetimeUpload = date("Y-m-d H:i:sa");
                     $status = 1;
 
@@ -50,7 +53,7 @@
 
                     if($ok == 1){
                         $ip = insert_photo($title, $caption, $file_name, $final_file, $file_size, $file_type, 
-                                $illustrator, $datetimeUpload, $tags, $status);
+                                $illustrator, $question, $datetimeUpload, $tags, $status);
                         if($ip){
                         	//move to folder uploads
                     		move_uploaded_file($file_loc,$folder.$final_file);

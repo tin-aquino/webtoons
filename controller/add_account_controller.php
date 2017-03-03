@@ -8,16 +8,16 @@
                     !($_POST['addmname']== null)&& !($_POST['addemail']== null) && !($_POST['addatype']== null)) {
                 
                 //admin/employee table
-                $id = trim($_POST['addidnum']);
-                $lname = trim($_POST['addlname']);
-                $fname = trim($_POST['addfname']);
-                $mname = trim($_POST['addmname']);                
-                $email = trim($_POST['addemail']);
+                $id = mysqli_real_escape_string($con, trim($_POST['addidnum']));
+                $lname = mysqli_real_escape_string($con, trim($_POST['addlname']));
+                $fname = mysqli_real_escape_string($con, trim($_POST['addfname']));
+                $mname = mysqli_real_escape_string($con, trim($_POST['addmname']));                
+                $email = mysqli_real_escape_string($con, trim($_POST['addemail']));
                 
                 //accounts table
-                $uname = trim($_POST['addidnum']);
-                $pass = trim($_POST['addidnum'])+"dswdsoctech";                
-                $acctype = trim($_POST['addatype']);
+                $uname = mysqli_real_escape_string($con, trim($_POST['addidnum']));
+                $pass = mysqli_real_escape_string($con, trim($_POST['addidnum']))+"dswdsoctech";                
+                $acctype = mysqli_real_escape_string($con, trim($_POST['addatype']));
                 $status = 'active';
                 $setQ = 0; 
 
@@ -35,33 +35,33 @@
                         if($acctype == 'admin'){
                             $iad = insert_admin($addidNum, $id, $lname, $fname, $mname, $email);
                             if($iad){
-                                redirect("Admin account successfully added!", "../view/admin/manage_accounts.php?users=all");
+                                redirect("Admin account successfully added!", "../view/admin/index.php?users=all");
                             }                                
                         }
                         else if($acctype == 'employee'){
                             $is = insert_employee($addidNum, $id, $lname, $fname, $mname, $email);
                             if($is){
-                                redirect("Employee account successfully added!", "../view/admin/manage_accounts.php?users=all");
+                                redirect("Employee account successfully added!", "../view/admin/index.php?users=all");
                             }                                
                         }                        
                         else{
-                            redirect("Account type not recognized.", "../view/admin/manage_accounts.php?users=all");
+                            redirect("Account type not recognized.", "../view/admin/index.php?users=all");
                         }                                    
                     }
                     else {
-                        redirect("Error encountered in wt_accounts table.", "../view/admin/manage_accounts.php?users=all");
+                        redirect("Error encountered in wt_accounts table.", "../view/admin/index.php?users=all");
                     }                                      
                 }
                 else {                    
-                    redirect("Account already exists.", "../view/admin/manage_accounts.php?users=all");
+                    redirect("Account already exists.", "../view/admin/index.php?users=all");
                 }
             }        
             else {
-                redirect("Kindly input all fields.", "../view/admin/manage_accounts.php?users=all");
+                redirect("Kindly input all fields.", "../view/admin/index.php?users=all");
             }               
         } 
         catch (Exception $ex) {
-            redirect("Error", "../view/admin/manage_accounts.php?users=all");
+            redirect("Error", "../view/admin/index.php?users=all");
         }
     }
 

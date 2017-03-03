@@ -2,10 +2,12 @@
     require("../file_includes/dbconnect.php");
     require("../model/model.php");  
 
+    global $con;
+
     if (isset($_POST['forgotpass'])) {
         if (!($_POST['username']==null) && !($_POST['email']==null)) {
-            $username = trim($_POST['username']);
-            $email = trim($_POST['email']);
+            $username = mysqli_real_escape_string($con, trim($_POST['username']));
+            $email = mysqli_real_escape_string($con, trim($_POST['email']));
             
             $account = verify_fpass($username, $email);
             if ($account) {
@@ -22,8 +24,8 @@
     }
     else if (isset($_POST['showsecQ'])) {
         if (!($_POST['a1']==null) && !($_POST['a2']==null)) {
-            $a1 = trim($_POST['a1']);
-            $a2 = trim($_POST['a2']);
+            $a1 = mysqli_real_escape_string($con, trim($_POST['a1']));
+            $a2 = mysqli_real_escape_string($con, trim($_POST['a2']));
             
             $secID = get_field('secID', 'wt_secqa', $_SESSION['accountID']);
             $answer = verify_ans($a1, $a2, $secID);
@@ -42,8 +44,8 @@
     }  
     else if (isset($_POST['change_pass'])) {   
         if (!($_POST['newpass1']==null) && !($_POST['newpass2']==null)) {
-            $newpass1 = $_POST['newpass1'];
-            $newpass2 = $_POST['newpass2'];
+            $newpass1 = mysqli_real_escape_string($con, $_POST['newpass1']);
+            $newpass2 = mysqli_real_escape_string($con, $_POST['newpass2']);
             
             $count = accountExists($_SESSION['accountID']);
 

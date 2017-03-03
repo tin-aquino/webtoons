@@ -1,6 +1,8 @@
 <?php
     require("../file_includes/dbconnect.php");
     require("../model/model.php");
+
+    global $con;
     
     if (isset($_POST['register']) && isset($_POST['g-recaptcha-response'])) {        
         try {
@@ -9,18 +11,18 @@
                 !($_POST['province']== null) && !($_POST['email']== null) && !($_POST['username']== null) && !($_POST['password']== null) && !($_POST['g-recaptcha-response']== null)) {
                 
                 //user table
-                $lname = trim($_POST['lname']);
-                $fname = trim($_POST['fname']);
-                $mname = trim($_POST['mname']);
-                $bday = trim($_POST['bday']);
-                $sex = trim($_POST['sex']);
-                $city = trim($_POST['city']);
-                $province = trim($_POST['province']);
-                $email = trim($_POST['email']);
+                $lname = mysqli_real_escape_string($con, trim($_POST['lname']));
+                $fname = mysqli_real_escape_string($con, trim($_POST['fname']));
+                $mname = mysqli_real_escape_string($con, trim($_POST['mname']));
+                $bday = mysqli_real_escape_string($con, trim($_POST['bday']));
+                $sex = mysqli_real_escape_string($con, trim($_POST['sex']));
+                $city = mysqli_real_escape_string($con, trim($_POST['city']));
+                $province = mysqli_real_escape_string($con, trim($_POST['province']));
+                $email = mysqli_real_escape_string($con, trim($_POST['email']));
                 
                 //accounts table
-                $username = trim($_POST['username']);
-                $password = trim($_POST['password']);
+                $username = mysqli_real_escape_string($con, trim($_POST['username']));
+                $password = mysqli_real_escape_string($con, trim($_POST['password']));
                 $atype = 'user';
                 $status = 'active';
                 $setQ = 0;                
