@@ -37,7 +37,7 @@
 		    </div>
 	  		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      	<ul class="nav navbar-nav">		      		
-					<li><a href="manage_accounts.php?users=all">Accounts</a></li>		
+					<li><a href="index.php?users=all">Accounts</a></li>		
 					<li><a href="users_list.php?users=all">Users List</a></li>		
 		        </ul>
 		        <ul class="nav navbar-nav navbar-right">
@@ -81,8 +81,7 @@
                    <th>City</th>
                    <th>Province</th>
                    <th>E-mail</th>
-                   <th>Account Status</th>
-                   <th>Account Type</th>
+                   <th>Account Status</th>                   
                </tr>	
 		<?php
 			$a = $_GET['users'];

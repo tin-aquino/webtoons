@@ -38,7 +38,7 @@
 		    </div>
 	  		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      	<ul class="nav navbar-nav">		      		
-					<li><a href="manage_accounts.php?users=all">Accounts</a></li>		
+					<li><a href="index.php?users=all">Accounts</a></li>		
 					<li><a href="users_list.php?users=all">Users List</a></li>		
 		        </ul>
 		        <ul class="nav navbar-nav navbar-right">
@@ -66,11 +66,11 @@
 	    	<span class="caret"></span>
 	  	</button>
 	  	<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-	  		<li><a href="manage_accounts.php?users=all" type="submit" name='all' value='All'>All</a></li>
-	  		<li><a href="manage_accounts.php?users=admin" type="submit" name='admin' value='Admin'>Admin</a></li>
-	  		<li><a href="manage_accounts.php?users=employee" type="submit" name='employee' value='Employee'>Employee</a></li>
-	  		<li><a href="manage_accounts.php?users=active" type="submit" name='active' value='Active'>Active</a></li>
-	  		<li><a href="manage_accounts.php?users=inactive" type="submit" name='inactive' value='Inactive'>Inactive</a></li>
+	  		<li><a href="index.php?users=all" type="submit" name='all' value='All'>All</a></li>
+	  		<li><a href="index.php?users=admin" type="submit" name='admin' value='Admin'>Admin</a></li>
+	  		<li><a href="index.php?users=employee" type="submit" name='employee' value='Employee'>Employee</a></li>
+	  		<li><a href="index.php?users=active" type="submit" name='active' value='Active'>Active</a></li>
+	  		<li><a href="index.php?users=inactive" type="submit" name='inactive' value='Inactive'>Inactive</a></li>
 	  	</ul>
 	</div>
 
@@ -225,13 +225,13 @@
 		    	<div class="modal-content">
 		      		<div class="modal-header">
 				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				        <h4 class="modal-title" id="myModalLabel">Add Account</h4>
+				        <h4 class="modal-title" id="myModalLabel">Activate Account</h4>
 		      		</div>
 		      	<div class="modal-body">
 		        	<form action='../../controller/activate_account_controller.php' method='POST'>
 		        		<div class="form-group">
 							<label for="exampleInputEmail1">Account Type</label>
-							<select class="form-control" name="addatype">
+							<select class="form-control" name="atype">
 								<option value=''>--Account Type--</option>	                        
 		                        <option value = "admin">Admin</option>
 		                        <option value = "employee">Employee</option>
@@ -275,13 +275,13 @@
 		    	<div class="modal-content">
 		      		<div class="modal-header">
 				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				        <h4 class="modal-title" id="myModalLabel">Add Account</h4>
+				        <h4 class="modal-title" id="myModalLabel">Deactivate Account</h4>
 		      		</div>
 		      	<div class="modal-body">
 		        	<form action='../../controller/deactivate_account_controller.php' method='POST'>
 		        		<div class="form-group">
 							<label for="exampleInputEmail1">Account Type</label>
-							<select class="form-control" name="addatype">
+							<select class="form-control" name="atype">
 								<option value=''>--Account Type--</option>	                        
 		                        <option value = "admin">Admin</option>
 		                        <option value = "employee">Employee</option>
@@ -325,29 +325,25 @@
 		    	<div class="modal-content">
 		      		<div class="modal-header">
 				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				        <h4 class="modal-title" id="myModalLabel">Login</h4>
+				        <h4 class="modal-title" id="myModalLabel">Update Account Information</h4>
 		      		</div>
 		      	<div class="modal-body">
 		        	<form action='../../controller/update_account_controller.php' method='POST'>
 		        		<div class="form-group">
 						    <label for="exampleInputEmail1">Last Name</label>
-						    <input type="text" class="form-control" name="lname" id="exampleInputEmail1" value="<?php echo get_field('lname', 'wt_admin', $_SESSION['myID']);?>" required>
+						    <input type="text" class="form-control" name="alname" id="exampleInputEmail1" value="<?php echo get_field('lname', 'wt_admin', $_SESSION['myID']);?>" required>
 						</div>
 						<div class="form-group">
 						    <label for="exampleInputEmail1">First Name</label>
-						    <input type="text" class="form-control" name="fname" id="exampleInputEmail1" value="<?php echo get_field('fname', 'wt_admin', $_SESSION['myID']);?>" required>
+						    <input type="text" class="form-control" name="afname" id="exampleInputEmail1" value="<?php echo get_field('fname', 'wt_admin', $_SESSION['myID']);?>" required>
 						</div>
 						<div class="form-group">
 						    <label for="exampleInputEmail1">Middle Name</label>
-						    <input type="text" class="form-control" name="mname" id="exampleInputEmail1" value="<?php echo get_field('mname', 'wt_admin', $_SESSION['myID']);?>" required>
-						</div>
-						<div class="form-group">
-						    <label for="exampleInputEmail1">Birthday</label>
-						    <input type="date" class="form-control" name="bday" id="exampleInputEmail1" value="<?php echo get_field('birthday', 'wt_admin', $_SESSION['myID']);?>" required>
-						</div>
+						    <input type="text" class="form-control" name="amname" id="exampleInputEmail1" value="<?php echo get_field('mname', 'wt_admin', $_SESSION['myID']);?>" required>
+						</div>						
 						<div class="form-group">
 						    <label for="exampleInputEmail1">Email address</label>
-						    <input type="email" name="email" class="form-control" id="exampleInputEmail1" value="<?php echo get_field('email', 'wt_admin', $_SESSION['myID']);?>" required>
+						    <input type="email" name="aemail" class="form-control" id="exampleInputEmail1" value="<?php echo get_field('email', 'wt_admin', $_SESSION['myID']);?>" required>
 						</div>
 						<div class="form-group">
 						<button type='submit' class="btn btn-default" name='update_account' value='Update'>
@@ -415,7 +411,7 @@
 		    	<div class="modal-content">
 		      		<div class="modal-header">
 				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				        <h4 class="modal-title" id="myModalLabel">Update Security Questions</h4>
+				        <h4 class="modal-title" id="myModalLabel">Update Password</h4>
 		      		</div>
 		      	<div class="modal-body">
 		        	<form action='../../controller/update_password_controller.php' method='POST'>

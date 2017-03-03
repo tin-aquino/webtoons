@@ -3,15 +3,15 @@
     require("model/model.php");
     
     if(isset($_COOKIE['loggedin_user'])){
-        header ('location: view/user/profile.php');                
+        header ('location: view/user/index.php');                
     }
     
     else if (isset($_COOKIE['loggedin_admin'])){
-        header ('location: view/admin/profile.php');                
+        header ('location: view/admin/index.php?users=all');                
     }
     
     else if (isset($_COOKIE['loggedin_employee'])){
-        header ('location: view/employee/profile.php');                
+        header ('location: view/employee/index.php');                
     }              
 ?>
 

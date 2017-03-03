@@ -2,8 +2,10 @@
     require("../model/model.php");
     require('../file_includes/dbconnect.php');
 
-    $myusername = trim($_POST['username']);
-    $mypassword = trim($_POST['password']);
+    global $con;
+
+    $myusername = mysqli_real_escape_string($con, trim($_POST['username']));
+    $mypassword = mysqli_real_escape_string($con, trim($_POST['password']));
     
     $final_pass = md5($mypassword);
 
@@ -28,7 +30,7 @@
                     else {
                         $admin_cookie= setcookie('loggedin_admin', date("F jS - g:i a"), 0, "/");
                         if ($admin_cookie) {
-                            header ('location: ../view/admin/profile.php');   
+                            header ('location: ../view/admin/index.php?users=all');   
                         }
                     }
                 }

@@ -1000,8 +1000,7 @@
                     <td>".$city."</td>
                     <td>".$province."</td>
                     <td>".$email."</td>
-                    <td>".$status."</td>
-                    <td>".$atype."</td>
+                    <td>".$status."</td>                    
                 </tr>";
         }
     }
@@ -1039,8 +1038,7 @@
                     <td>".$city."</td>
                     <td>".$province."</td>
                     <td>".$email."</td>
-                    <td>".$status."</td>
-                    <td>".$atype."</td>
+                    <td>".$status."</td>                    
                 </tr>";
         }
     }
@@ -1078,8 +1076,7 @@
                     <td>".$city."</td>
                     <td>".$province."</td>
                     <td>".$email."</td>
-                    <td>".$status."</td>
-                    <td>".$atype."</td>
+                    <td>".$status."</td>                    
                 </tr>";
         }
     }
@@ -1164,13 +1161,13 @@
 
     //upload webtoon 
     function insert_photo($title, $caption, $file_name, $final_file, $file_size, $file_type, 
-                                $illustrator, $datetimeUpload, $tags, $status){
+                                $illustrator, $question, $datetimeUpload, $tags, $status){
         global $con;
 
         $query = "INSERT INTO wt_webtoon(title, caption, fileName, fileContent, fileSize, fileType,
-                        illustrator, datetimeUpload, tags, status)"
+                        illustrator, question, datetimeUpload, tags, status)"
                     . "VALUES('$title', '$caption', '$file_name', '$final_file', '$file_size', '$file_type', 
-                                '$illustrator', '$datetimeUpload', '$tags', '$status')";
+                                '$illustrator', '$question', '$datetimeUpload', '$tags', '$status')";
         $result = mysqli_query($con, $query);
         
         if ($result) {
@@ -1250,17 +1247,19 @@
     } 
 
     //update webtoon
-    function update_webtoon($webtoonID, $title, $caption, $illustrator, $tags) {
+    function update_webtoon($webtoonID, $title, $caption, $illustrator, $question, $tags) {
         global $con; 
 
         $query_title = "UPDATE wt_webtoon SET title='$title' WHERE webtoonID = '$webtoonID'" ;
         $query_caption = "UPDATE wt_webtoon SET caption='$caption' WHERE webtoonID = '$webtoonID'" ;
         $query_illustrator = "UPDATE wt_webtoon SET illustrator='$illustrator' WHERE webtoonID = '$webtoonID'" ;
+        $query_question = "UPDATE wt_webtoon SET question='$question' WHERE webtoonID = '$webtoonID'" ;
         $query_tags = "UPDATE wt_webtoon SET tags='$tags' WHERE webtoonID = '$webtoonID'" ;
 
         $result_title = mysqli_query($con, $query_title);
         $result_caption = mysqli_query($con, $query_caption);
         $result_illustrator = mysqli_query($con, $query_illustrator);
+        $result_question = mysqli_query($con, $query_question);
         $result_tags = mysqli_query($con, $query_tags);       
     }
 

@@ -7,12 +7,12 @@
             if (!($_POST['atype']== null) && !($_POST['idnum']== null) && !($_POST['lname']== null) &&
                     !($_POST['mname']== null)&& !($_POST['fname']== null) && !($_POST['pass']== null)) {
 
-                $atype = trim($_POST['atype']);
-                $idnum = trim($_POST['idnum']);
-                $lname = trim($_POST['lname']);
-                $fname = trim($_POST['fname']);
-                $mname = trim($_POST['mname']);
-                $pass = trim($_POST['pass']);
+                $atype = mysqli_real_escape_string($con, trim($_POST['atype']));
+                $idnum = mysqli_real_escape_string($con, trim($_POST['idnum']));
+                $lname = mysqli_real_escape_string($con, trim($_POST['lname']));
+                $fname = mysqli_real_escape_string($con, trim($_POST['fname']));
+                $mname = mysqli_real_escape_string($con, trim($_POST['mname']));
+                $pass = mysqli_real_escape_string($con, trim($_POST['pass']));
 
                 $hash = md5($pass);
                 $curr_pass = get_field('password', 'wt_accounts', $_SESSION['myID']);
@@ -26,26 +26,26 @@
 
                         if ($status == 'active') {
                             deactivate_account($accountID);
-                            redirect("Account deactivated", "../view/admin/manage_accounts.php?users=all");
+                            redirect("Account deactivated", "../view/admin/index.php?users=all");
                         }
                         else {
-                            redirect("Account already deactived.", "../view/admin/manage_accounts.php?users=all");     
+                            redirect("Account already deactived.", "../view/admin/index.php?users=all");     
                         }
                     }
                     else {
-                       redirect("Account does not exist.", "../view/admin/manage_accounts.php?users=all"); 
+                       redirect("Account does not exist.", "../view/admin/index.php?users=all"); 
                     }
                 }
                 else {
-                    redirect("Incorrect Password.", "../view/admin/manage_accounts.php?users=all");
+                    redirect("Incorrect Password.", "../view/admin/index.php?users=all");
                 }                
             }
             else {
-                redirect("Kindly input all fields.", "../view/admin/manage_accounts.php?users=all");
+                redirect("Kindly input all fields.", "../view/admin/index.php?users=all");
             }
         }
         catch (Exception $ex) {
-            redirect("Error", "../view/admin/manage_accounts.php?users=all");
+            redirect("Error", "../view/admin/index.php?users=all");
         }
     }
 ?>
