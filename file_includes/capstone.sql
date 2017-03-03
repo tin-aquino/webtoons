@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2017 at 03:39 AM
+-- Generation Time: Mar 03, 2017 at 03:49 AM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -225,21 +225,22 @@ CREATE TABLE IF NOT EXISTS `wt_user` (
   `sex` enum('M','F') NOT NULL,
   `city` varchar(50) NOT NULL,
   `province` varchar(50) NOT NULL,
-  `email` varchar(100) NOT NULL
+  `email` varchar(100) NOT NULL,
+  `token` int(11) NOT NULL DEFAULT '10'
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `wt_user`
 --
 
-INSERT INTO `wt_user` (`userID`, `accountID`, `lname`, `fname`, `mname`, `birthday`, `sex`, `city`, `province`, `email`) VALUES
-(1, 3, 'Cruz', 'Ella May', 'Mailom111', '1996-05-21', 'M', 'Bogo', 'Bulacan', 'mamaaaaw@gmail.com'),
-(2, 4, 'Tudio', 'Zara Mikaela', 'de Luna', '1996-04-05', 'F', 'calamba', 'laguna', 'zawa@gmail.com'),
-(3, 11, 'Cortez', 'Rhealyn', 'Awanin', '1996-11-11', 'F', 'Tanauan', 'Cortez', 'weya@gmail.com'),
-(4, 12, 'Ambrocio', 'Jessee Clarence', 'Balleras', '0000-00-00', 'M', 'Calamba', 'Ambrocio', 'jec@gmail.com'),
-(5, 13, 'Alba', 'Charles Joshua', 'Mendoza', '1997-08-30', 'M', 'Batangas City', 'Alba', 'josh@gmail.com'),
-(6, 14, 'Aseoche', 'Krej', 'Ewan', '1998-01-20', 'M', 'Victorias', 'Aseoche', 'greg@gmail.com'),
-(7, 15, 'Conde', 'Pauline', 'Aseoche', '1996-12-23', 'F', 'BiÃ±an', 'Laguna', 'poleenomial@gmail.com');
+INSERT INTO `wt_user` (`userID`, `accountID`, `lname`, `fname`, `mname`, `birthday`, `sex`, `city`, `province`, `email`, `token`) VALUES
+(1, 3, 'Cruz', 'Ella May', 'Mailom111', '1996-05-21', 'M', 'Bogo', 'Bulacan', 'mamaaaaw@gmail.com', 10),
+(2, 4, 'Tudio', 'Zara Mikaela', 'de Luna', '1996-04-05', 'F', 'calamba', 'laguna', 'zawa@gmail.com', 10),
+(3, 11, 'Cortez', 'Rhealyn', 'Awanin', '1996-11-11', 'F', 'Tanauan', 'Cortez', 'weya@gmail.com', 10),
+(4, 12, 'Ambrocio', 'Jessee Clarence', 'Balleras', '0000-00-00', 'M', 'Calamba', 'Ambrocio', 'jec@gmail.com', 10),
+(5, 13, 'Alba', 'Charles Joshua', 'Mendoza', '1997-08-30', 'M', 'Batangas City', 'Alba', 'josh@gmail.com', 10),
+(6, 14, 'Aseoche', 'Krej', 'Ewan', '1998-01-20', 'M', 'Victorias', 'Aseoche', 'greg@gmail.com', 10),
+(7, 15, 'Conde', 'Pauline', 'Aseoche', '1996-12-23', 'F', 'BiÃ±an', 'Laguna', 'poleenomial@gmail.com', 10);
 
 -- --------------------------------------------------------
 
