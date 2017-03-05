@@ -50,7 +50,7 @@
   		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      	<ul class="nav navbar-nav">
 	      		<li><a href="index.php">Home</a></li>
-				<li><a href="view/wt_list.php">Webtoons List</a></li>
+				<li><a href="view/webtoons.php">Webtoons List</a></li>
 	        </ul>
 	    </div>   	
 		</nav>
@@ -91,13 +91,11 @@
 		        		<div class="form-group">
 						    <label for="exampleInputEmail1">Username</label>
 						    <input type="text" class="form-control" name="username" id="exampleInputEmail1" placeholder="Username" required>
-						</div>
-						<!--Username: <input type='text' name='username' placeholder='Username' required> <br>-->
+						</div>						
 						<div class="form-group">
 						    <label for="exampleInputPassword1">Password</label>
 						    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
-						</div>
-						<!--Password: <input type='password' name='password' placeholder='Password' required> <br>-->
+						</div>						
 						<a href="view/forgot_pass.php">Forgot password?</a><br>
 						<div class="form-group"></div>
 						<button type='submit' class="btn btn-default" name='login' value='Login'>
@@ -107,17 +105,7 @@
 		      	</div>
 		    	</div>
 		  	</div>
-		</div>
-
-		<!--<div id='login'>
-			<h2>Login</h2>
-			<form action='controller/login_controller.php' method='POST'>
-				Username: <input type='text' name='username' placeholder='Username' required> <br>
-				Password: <input type='password' name='password' placeholder='Password' required> <br>
-				<a href="view/forgot_pass.php">Forgot password?</a><br>
-				<input type='submit' name='login' value='Login'>
-			</form>
-		</div> -->
+		</div>		
 
 		<!-- convert to modal-->
 		<!-- Button trigger modal -->
@@ -191,75 +179,56 @@
 						    <label for="exampleInputPassword1">Password</label>
 						    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
 						</div>
-						<div class="form-group g-recaptcha" data-sitekey="6Lf57hAUAAAAAFcemwhoWxJKs611f0s25TunkbDG">
-							
-						</div>
+						<div class="form-group g-recaptcha" data-sitekey="6Lf57hAUAAAAAFcemwhoWxJKs611f0s25TunkbDG"></div>
 						<div class="form-group">    
-						<button type="submit" value="Submit" class="btn btn-default" name="register">Submit</button>
+							<button type="submit" value="Submit" class="btn btn-default" name="register">Submit</button>
 						</div>   
-						
-    
-						<!--
-						Last Name: <input type='text' name='lname' placeholder='Last Name' required> <br>
-						First Name: <input type='text' name='fname' placeholder='First Name' required> <br>
-						Middle Name: <input type='text' name='mname' placeholder='Middle Name' required> <br>
-						Birthday: <input type='date' name='bday' placeholder='mm/dd/yyyy' required> <br>
-						Sex:	<input type='radio' name='sex' value='M'> Male 
-								<input type='radio' name='sex' value='F'> Female <br>
-						City: 	
-							<select name='city'>
-								<option value=''>--Choose a city--</option>
-								<?php citylist(); ?>
-							</select> <br>
-						Province: 
-							<select name="province">
-								<option value=''>--Choose a province--</option>
-								<?php provincelist(); ?>
-							</select> <br>
-						Email: <input type='email' name='email' placeholder='someone@gmail.com' required> <br>
-						<input type='submit' value='Submit'>
-						
-					</form>
-		      	</div>
-		    	</div>
-		  	</div>
-		</div>
-
-		<div id='register'>
-			<h2>Register</h2>
-			<form action='controller/add_user_controller.php' method='POST'>
-				Last Name: <input type='text' name='lname' placeholder='Last Name' required> <br>
-				First Name: <input type='text' name='fname' placeholder='First Name' required> <br>
-				Middle Name: <input type='text' name='mname' placeholder='Middle Name' required> <br>
-				Birthday: <input type='date' name='bday' placeholder='mm/dd/yyyy' required> <br>
-				Sex:	<input type='radio' name='sex' value='M'> Male 
-						<input type='radio' name='sex' value='F'> Female <br>
-				City: 	
-					<select name='city'>
-						<option value=''>Choose a city</option>
-						<?php citylist(); ?>
-					</select> <br>
-				Province: 
-					<select name="province">
-						<option value=''>Choose a province</option>
-						<?php provincelist(); ?>
-					</select> <br>
-				Email: <input type='email' name='email' placeholder='someone@gmail.com' required> <br>
-				Username: <input type='text' name='username' placeholder='Username' required> <br>
-				Password: <input type='text' name='password' placeholder='Password' required> <br>
-				//RECAPTCHA
-				<div class="g-recaptcha" data-sitekey="6Lf57hAUAAAAAFcemwhoWxJKs611f0s25TunkbDG"></div>
-				//END RECAPTCHA
-				<input type='submit' value='Submit' name='register'>-->
 					</form>
 				</div>
 				</div>
 			</div>
 		</div>
 
-	<div class="container">
+	<div class="container">		
 	<div class="row">
-			
+		<div class='col-sm-6 col-md-4'>
+			<a href='view/view_toons.php?webtoon=1'>
+		        <div class='thumbnail'>
+		            <img src="file_includes/images/1.jpg" alt='...'>
+		            <div class='caption'>
+		                <h3>Kitkat</h3>
+		                <p>Hippocrates</p>
+		                <p>Life is short, the art long.</p>                                                                        
+		            </div>
+		        </div>
+	    	</a>
+	    </div>
+
+	    <div class='col-sm-6 col-md-4'>
+	    	<a href='view/view_toons.php?webtoon=2'>
+		        <div class='thumbnail'>
+		            <img src="file_includes/images/2.jpg" alt='...'>
+		            <div class='caption'>
+		                <h3>Kitty</h3>
+		                <p>William Ellery Channing</p>
+		                <p>How easy to be amiable in the midst of happiness and success.</p>                                                                        
+		            </div>
+		        </div>
+		    </a>
+	    </div>
+
+	    <div class='col-sm-6 col-md-4'>
+	    	<a href='view/view_toons.php?webtoon=3'>
+		        <div class='thumbnail'>
+		            <img src="file_includes/images/3.jpg" alt='...'>
+		            <div class='caption'>
+		                <h3>Cutie</h3>
+		                <p>Francis Bacon</p>
+		                <p>The job of the artist is always to deepen the mystery.</p>                                                                        
+		            </div>
+		        </div>
+	    	</a>
+	    </div>
 	</div>
 	</div>
 	

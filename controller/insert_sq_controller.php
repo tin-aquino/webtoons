@@ -39,4 +39,7 @@
             redirect("Kindly input all fields.", "../view/secQ.php");                
         }           	
     }
+    else {
+        header("location: ../");
+    }
 ?> 

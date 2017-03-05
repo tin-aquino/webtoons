@@ -1180,7 +1180,7 @@
 
     
     //list webtoons
-    function list_webtoons($directory) {
+    function list_webtoons($directory, $logged_in) {
         global $con;
         
         $allowed_types = array('jpg', 'jpeg', 'gif', 'png');
@@ -1212,8 +1212,9 @@
                 //$title = htmlspecialchars($title);
                 //$title = preg_replace('/[^a-zA-Z0-9\']/', ' ', "$title");  
 
-                if (in_array($ext, $allowed_types)) {                                
-                    echo "<a href='../user/view_toons.php?webtoon=$webtoonID'><div class='col-sm-6 col-md-4'>
+                if (in_array($ext, $allowed_types)) {     
+                    if ($logged_in == "yes") {
+                        echo "<a href='../user/view_toons.php?webtoon=$webtoonID'><div class='col-sm-6 col-md-4'>
                             <div class='thumbnail'>
                                 <img src=$directory/$file alt='...'>
                                 <div class='caption'>
@@ -1223,6 +1224,20 @@
                                 </div>
                             </div>
                         </div></a>";
+                    }   
+                    else {
+                        echo "<a href='../controller/unlock_webtoon.php'><div class='col-sm-6 col-md-4'>
+                            <div class='thumbnail'>
+                                <img src=$directory/$file alt='...'>
+                                <div class='caption'>
+                                    <h3>$title</h3>
+                                    <p>by $illustrator</p>
+                                    <p>$caption</p>                                                                        
+                                </div>
+                            </div>
+                        </div></a>";                        
+                    }                        
+                    
                     $i++;
                 }
             }

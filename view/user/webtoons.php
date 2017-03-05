@@ -40,7 +40,7 @@
 	  		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      	<ul class="nav navbar-nav">
 		      		<li><a href="index.php">Home</a></li>
-					<li><a href="webtoons.php">Webtoon</a></li>			
+					<li><a href="webtoons.php">Webtoons List</a></li>			
 		        </ul>
 		        <ul class="nav navbar-nav navbar-right">
 		        	<li class="dropdown">
@@ -62,7 +62,8 @@
 		<div class="row">
 			<?php 
 				$directory = '../../file_includes/uploads';
-				list_webtoons($directory); 
+				$logged_in = 'yes';
+				list_webtoons($directory, $logged_in); 
 			?>
 		</div>
 		</div>
