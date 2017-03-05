@@ -218,43 +218,45 @@
 			</p>
 		</div>
 		<div class="container">
-		<?php
-			
-
-
-
-
-		?>
 		<div class="row">
-			  <div class="col-sm-6 col-md-4">
-			    	<div class="thumbnail">
-			      		<a href="view_webtoon.php?webtoon_id=#"><img src="../../file_includes/images/1.jpg" alt="..."></a>
-			      		<div class="caption">
-					        <h3>Thumbnail label</h3>
-					        <p>...</p>
-			      		</div>
-			   		</div>
-			  </div>
+			<div class='col-sm-6 col-md-4'>
+				<a href='../view_toons.php?webtoon=1'>
+			        <div class='thumbnail'>
+			            <img src="../../file_includes/images/1.jpg" alt='...'>
+			            <div class='caption'>
+			                <h3>Kitkat</h3>
+			                <p>Hippocrates</p>
+			                <p>Life is short, the art long.</p>                                                                        
+			            </div>
+			        </div>
+		    	</a>
+		    </div>
 
-			  <div class="col-sm-6 col-md-4">
-			    	<div class="thumbnail">
-			      		<a href="../../file_includes/images/2.jpg"><img src="../../file_includes/images/2.jpg" alt="..."></a>
-			      		<div class="caption">
-					        <h3>Thumbnail label</h3>
-					        <p>...</p>
-			      		</div>
-			   		</div>
-			  </div>
+		    <div class='col-sm-6 col-md-4'>
+		    	<a href='../view_toons.php?webtoon=2'>
+			        <div class='thumbnail'>
+			            <img src="../../file_includes/images/2.jpg" alt='...'>
+			            <div class='caption'>
+			                <h3>Kitty</h3>
+			                <p>William Ellery Channing</p>
+			                <p>How easy to be amiable in the midst of happiness and success.</p>                                                                        
+			            </div>
+			        </div>
+			    </a>
+		    </div>
 
-			  <div class="col-sm-6 col-md-4">
-			    	<div class="thumbnail">
-			      		<a href="../../file_includes/images/3.jpg"><img src="../../file_includes/images/3.jpg" alt="..."></a>
-			      		<div class="caption">
-					        <h3>Thumbnail label</h3>
-					        <p>...</p>
-			      		</div>
-			   		</div>
-			  </div>
+		    <div class='col-sm-6 col-md-4'>
+		    	<a href='../view_toons.php?webtoon=3'>
+			        <div class='thumbnail'>
+			            <img src="../../file_includes/images/3.jpg" alt='...'>
+			            <div class='caption'>
+			                <h3>Cutie</h3>
+			                <p>Francis Bacon</p>
+			                <p>The job of the artist is always to deepen the mystery.</p>                                                                        
+			            </div>
+			        </div>
+		    	</a>
+		    </div>
 		</div>
 		</div>
 </body>
