@@ -67,4 +67,7 @@
             redirect("Kindly input all fields.", "../view/change_password.php");
         } 
     }
+    else {
+        header("location: ../");
+    }
 ?>

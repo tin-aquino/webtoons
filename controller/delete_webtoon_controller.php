@@ -9,5 +9,8 @@
     	delete_webtoon($webtoonID);
     	redirect("Delete successful.", "../view/employee/index.php");   
     }
+    else {
+        header("location: ../");
+    }
 
 ?>

@@ -76,4 +76,7 @@
             redirect("Error", "../view/employee/index.php");
         }
     }
+    else {
+        header("location: ../");
+    }
 ?>

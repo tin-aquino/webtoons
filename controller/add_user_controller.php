@@ -73,5 +73,8 @@
             redirect("Error", "../");
         }
     }
+    else {
+        header("location: ../");
+    }
 
 ?>

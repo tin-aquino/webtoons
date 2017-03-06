@@ -64,5 +64,8 @@
             redirect("Error", "../view/admin/index.php?users=all");
         }
     }
+    else {
+        header("location: ../");
+    }
 
 ?>

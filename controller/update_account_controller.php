@@ -60,4 +60,7 @@
     		echo 'ERROR: MORE THAN 1 ACCOUNT FOUND.';
     	}
     }
+    else {
+        header("location: ../");
+    }
 ?> 
