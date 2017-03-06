@@ -59,15 +59,8 @@
 		    </div>   	
 		</nav>
 
-		<div class="container">
-		<div class="row">
-			<?php 
-				$directory = '../../file_includes/uploads';
-				$logged_in = 'yes';
-				list_webtoons($directory, $logged_in); 
-			?>
-		</div>
-		</div>
+		
+
 		<!--UPDATE ACCOUNT MODAL-->
 		<div class="modal fade" id="myUpdateAccount" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		  	<div class="modal-dialog" role="document">
@@ -220,5 +213,72 @@
 		    	</div>
 		  	</div>
 		</div>
+
+		<?php
+			global $con;
+
+			$query = "SELECT * FROM wt_webtoon WHERE status=1";
+			$result = mysqli_query($con, $query);
+
+			if($result) {
+            	$i = 0;
+
+            	while ($values = mysqli_fetch_array($result)) {
+	                $webtoonID = $values['webtoonID'];
+	                $title = $values['title'];
+	                $caption = $values['caption'];
+	                $file = $values['fileContent'];                
+	                $illustrator = $values['illustrator'];
+	                $question = $values['question'];
+	                $tags = $values['tags'];
+	    ?>
+		
+			<a href='#' data-toggle='modal' data-target='#view_webtoon<?php echo $webtoonID; ?>'>
+				<div class="col-sm-6 col-md-4">
+			    	<div class="thumbnail">
+			      		<img src="../../file_includes/uploads/<?php echo $file; ?>" alt="...">
+			      		<div class="caption">
+					        <h3><?php echo $title; ?></h3>
+                            <p>by <?php echo $illustrator; ?></p>
+                            <p><?php echo $caption; ?> </p> 					                                    
+			      		</div>
+			   		</div>
+				</div>		
+			</a>		
+		
+			<!--VIEW WEBTOON-->
+			<div class="modal fade" id="view_webtoon<?php echo $webtoonID; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  	<div class="modal-dialog" role="document">
+			    	<div class="modal-content">
+			      		<div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					        <h4 class="modal-title" id="myModalLabel">View Webtoon: <?php echo $title; ?> </h4>
+			      		</div>
+			      	<div class="modal-body">
+			        	<form action='view_webtoon.php?webtoon=<?php echo $webtoonID; ?>' method='POST'>
+			        		<blockquote>
+			        			<p>Are you sure you want to view <?php echo $title; ?>? 
+			        				<br> Answering "Yes" will deduct 1 from your tokens.</p>
+			        		</blockquote>
+							<div class="form-group"></div>
+							<input type = 'hidden' name = 'webtoonID' value = '<?php echo $webtoonID; ?>'>
+							<input type = 'hidden' name = 'userID' value = '<?php echo $_SESSION['userID']; ?>'>
+							<button type='submit' class="btn btn-primary" name='view_webtoon'>
+							Yes
+							</button>
+							<button type='button' class="btn btn-danger" data-dismiss="modal">
+							No
+							</button>
+							</div>	
+						</form>
+			      	</div>
+			    	</div>
+			  	</div>
+			</div>
+
+		<?php
+				}
+			}
+		?>
 </body>
 </html>

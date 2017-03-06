@@ -1214,7 +1214,7 @@
 
                 if (in_array($ext, $allowed_types)) {     
                     if ($logged_in == "yes") {
-                        echo "<a href='../user/view_toons.php?webtoon=$webtoonID'><div class='col-sm-6 col-md-4'>
+                        echo "<a href='#' data-toggle='modal' data-target='#subtract_token'><div class='col-sm-6 col-md-4'>
                             <div class='thumbnail'>
                                 <img src=$directory/$file alt='...'>
                                 <div class='caption'>
@@ -1284,6 +1284,65 @@
 
         $query = "UPDATE wt_webtoon SET status=0 WHERE webtoonID = '$webtoonID'" ;
         $result = mysqli_query($con, $query);
+    }
+
+    function count_token($userID) {
+        global $con;
+
+        $query_gettoken = "SELECT * from wt_user WHERE userID='$userID'";
+        $result_gettoken = mysqli_query($con, $query_gettoken); 
+        $row = mysqli_fetch_array($result_gettoken);
+
+        return $row['token'];
+    }
+
+    function subtract_token($userID) {
+        global $con;
+
+        $tokens = count_token($userID);
+
+        $new_token = $tokens - 1;
+
+        $query_newtoken = "UPDATE wt_user SET token='$new_token' WHERE userID='$userID'" ;
+        $result_newtoken = mysqli_query($con, $query_newtoken);
+    }
+
+    function add_token($userID) {
+        global $con;
+
+        $tokens = count_token($userID);
+
+        $new_token = $tokens + 1;
+
+        $query_newtoken = "UPDATE wt_user SET token='$new_token' WHERE userID='$userID'" ;
+        $result_newtoken = mysqli_query($con, $query_newtoken);
+    }
+
+    function count_likes($webtoonID) { 
+        global $con;
+
+        $query = "SELECT * from wt_likes WHERE webtoonID='$webtoonID'";
+        $result = mysqli_query($con, $query); 
+        $row = mysqli_fetch_array($result);
+
+        return $row['likes'];
+    }
+
+    function add_like($webtoonID) {
+        global $con;
+
+        $likes = count_likes($webtoonID);
+
+        if ($likes > 0) {
+            $likes = $likes + 1;
+            $query = "UPDATE wt_likes SET likes=$likes WHERE webtoonID ='$webtoonID'";
+            $result = mysqli_query($con, $query);
+        }
+        else {
+            $query = "INSERT wt_likes(webtoonID, likes) VALUES ($webtoonID, 1)";
+            $result = mysqli_query($con, $query);
+        }
+        
     }
 ?>
 

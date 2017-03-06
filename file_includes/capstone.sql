@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2017 at 06:23 AM
+-- Generation Time: Mar 05, 2017 at 09:37 PM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -132,8 +132,18 @@ INSERT INTO `wt_employee` (`employeeID`, `accountID`, `idnum`, `lname`, `fname`,
 CREATE TABLE IF NOT EXISTS `wt_likes` (
 `likeID` int(11) NOT NULL,
   `webtoonID` int(11) NOT NULL,
-  `like` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `likes` tinyint(1) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `wt_likes`
+--
+
+INSERT INTO `wt_likes` (`likeID`, `webtoonID`, `likes`) VALUES
+(1, 1, 3),
+(2, 2, 3),
+(3, 3, 2),
+(4, 8, 2);
 
 -- --------------------------------------------------------
 
@@ -237,7 +247,7 @@ CREATE TABLE IF NOT EXISTS `wt_user` (
 --
 
 INSERT INTO `wt_user` (`userID`, `accountID`, `lname`, `fname`, `mname`, `birthday`, `sex`, `city`, `province`, `email`, `token`) VALUES
-(1, 3, 'Cruz', 'Ella May', 'Mailom111', '1996-05-21', 'M', 'Bogo', 'Bulacan', 'mamaaaaw@gmail.com', 10),
+(1, 3, 'Cruz', 'Ella May', 'Mailom111', '1996-05-21', 'M', 'Bogo', 'Bulacan', 'mamaaaaw@gmail.com', 5),
 (2, 4, 'Tudio', 'Zara Mikaela', 'de Luna', '1996-04-05', 'F', 'calamba', 'laguna', 'zawa@gmail.com', 10),
 (3, 11, 'Cortez', 'Rhealyn', 'Awanin', '1996-11-11', 'F', 'Tanauan', 'Cortez', 'weya@gmail.com', 10),
 (4, 12, 'Ambrocio', 'Jessee Clarence', 'Balleras', '2014-05-14', 'M', 'Calamba', 'Ambrocio', 'jec@gmail.com', 10),
@@ -374,7 +384,7 @@ MODIFY `employeeID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `wt_likes`
 --
 ALTER TABLE `wt_likes`
-MODIFY `likeID` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `likeID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `wt_responses`
 --
