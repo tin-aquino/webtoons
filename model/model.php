@@ -1396,6 +1396,50 @@
         }
     }
 
+    //response list
+    function response_list() {
+        global $con;
+
+        $query = "SELECT * FROM wt_responses";
+        $result = mysqli_query($con, $query);
+        $i = 0;
+
+        while($row = mysqli_fetch_array($result)) {
+            $i = $i + 1;
+            $webtoonID = $row['webtoonID'];
+            $response = $row['response'];            
+            $name = $row['name'];
+            $age = $row['age'];
+            $sex = $row['sex'];
+            $city = $row['city'];
+            $province = $row['province'];
+            $email = $row['email'];
+            $dateAnswered = $row['dateAnswered'];
+
+            $query_wt = "SELECT * FROM wt_webtoon WHERE webtoonID='$webtoonID'";
+            $result_wt = mysqli_query($con, $query_wt);
+            $row_wt = mysqli_fetch_array($result_wt);
+
+            $webtoonName = $row_wt['title'];
+            $question = $row_wt['question'];
+            
+
+            echo "<tr>
+                    <td>".$i."</td>
+                    <td>".$webtoonName."</td>
+                    <td>".$question."</td>
+                    <td>".$response."</td>
+                    <td>".$name."</td>
+                    <td>".$age."</td>
+                    <td>".$sex."</td>
+                    <td>".$city."</td>
+                    <td>".$province."</td>
+                    <td>".$email."</td>
+                    <td>".$dateAnswered."</td>
+                </tr>";
+        }
+    }
+
     
 ?>
 
