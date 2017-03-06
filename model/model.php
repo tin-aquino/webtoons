@@ -1214,7 +1214,7 @@
 
                 if (in_array($ext, $allowed_types)) {     
                     if ($logged_in == "yes") {
-                        echo "<a href='#' data-toggle='modal' data-target='#subtract_token'><div class='col-sm-6 col-md-4'>
+                        echo "<a href='#' data-toggle='modal' data-target='#subtract_token'><div class='col-sm-6 col-md-2'>
                             <div class='thumbnail'>
                                 <img src=$directory/$file alt='...'>
                                 <div class='caption'>
@@ -1226,7 +1226,7 @@
                         </div></a>";
                     }   
                     else {
-                        echo "<a href='../controller/unlock_webtoon.php'><div class='col-sm-6 col-md-4'>
+                        echo "<a href='../controller/unlock_webtoon.php'><div class='col-sm-6 col-md-2'>
                             <div class='thumbnail'>
                                 <img src=$directory/$file alt='...'>
                                 <div class='caption'>

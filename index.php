@@ -44,7 +44,7 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 	      	</button>
-	      	<a class="navbar-brand" href="#">Brand</a>
+	      	<a class="navbar-brand" href="#"><span><img class="brand" src="file_includes/images/katsu.gif"><span class="red">Katsu</span>toons</span></a>
 	    </div>
   		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      	<ul class="nav navbar-nav">
@@ -193,7 +193,7 @@
 		<div class='col-sm-6 col-md-4'>
 			<a href='view/view_toons.php?webtoon=1'>
 		        <div class='thumbnail'>
-		            <img src="file_includes/images/1.jpg" alt='...'>
+		            <img class="img-responsive" src="file_includes/images/1.jpg" alt='...'>
 		            <div class='caption'>
 		                <h3>Kitkat</h3>
 		                <p>Hippocrates</p>
@@ -206,7 +206,7 @@
 	    <div class='col-sm-6 col-md-4'>
 	    	<a href='view/view_toons.php?webtoon=2'>
 		        <div class='thumbnail'>
-		            <img src="file_includes/images/2.jpg" alt='...'>
+		            <img class="img-responsive" src="file_includes/images/2.jpg" alt='...'>
 		            <div class='caption'>
 		                <h3>Kitty</h3>
 		                <p>William Ellery Channing</p>
@@ -219,7 +219,7 @@
 	    <div class='col-sm-6 col-md-4'>
 	    	<a href='view/view_toons.php?webtoon=3'>
 		        <div class='thumbnail'>
-		            <img src="file_includes/images/3.jpg" alt='...'>
+		            <img class="img-responsive" src="file_includes/images/3.jpg" alt='...'>
 		            <div class='caption'>
 		                <h3>Cutie</h3>
 		                <p>Francis Bacon</p>

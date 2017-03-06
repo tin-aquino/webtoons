@@ -36,7 +36,7 @@
 			        <span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
 		      	</button>
-		      	<a class="navbar-brand" href="#">Brand</a>
+		      	<a class="navbar-brand" href="#"><span><img class="brand" src="../../file_includes/images/katsu.gif"><span class="red">Katsu</span>toons</span></a>
 		    </div>
 	  		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      	<ul class="nav navbar-nav">
@@ -234,7 +234,7 @@
 	    ?>
 		
 			<a href='#' data-toggle='modal' data-target='#view_webtoon<?php echo $webtoonID; ?>'>
-				<div class="col-sm-6 col-md-4">
+				<div class="col-sm-6 col-md-2">
 			    	<div class="thumbnail">
 			      		<img src="../../file_includes/uploads/<?php echo $file; ?>" alt="...">
 			      		<div class="caption">
