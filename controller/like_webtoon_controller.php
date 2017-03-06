@@ -8,6 +8,8 @@
     	$userID = trim($_POST['userID']);
 
     	add_like($webtoonID);
+
+        $_SESSION['last_viewed'] = $webtoonID;
     	header("location: ../view/user/view_webtoon.php?webtoon=$webtoonID");
     }
     else {

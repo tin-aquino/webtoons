@@ -6,14 +6,14 @@
     require("../../model/model.php");  
     require('../../file_includes/dbconnect.php');
 
-    set_user_session($_SESSION['myID']);
-    if (isset($_POST['view_webtoon']) || isset($_POST['like_webtoon'])) {
+    set_user_session($_SESSION['myID']);       
 
-		//hidden
-    	$webtoonID = trim($_POST['webtoonID']);
-    	$userID = trim($_POST['userID']);
+    if (isset($_POST['view_webtoon']) || $_SESSION['last_viewed'] == $_GET['webtoon']) {		
+	    //hidden
+	    $webtoonID = $_GET['webtoon'];
+	    $userID = $_SESSION['userID'];  
 
-    	$tokens = count_token($userID);
+    	$tokens = count_token($userID);    	
 		
 		if ($tokens > 0){			
 			$query = "SELECT * from wt_webtoon WHERE webtoonID='$webtoonID'";
@@ -26,7 +26,9 @@
 	        $fileContent = $row['fileContent'];
 			$toon_path = "../../file_includes/uploads/$fileContent"; 	
 
-			subtract_token($userID);		
+			if (isset($_POST['view_webtoon'])) {
+				subtract_token($userID);	
+			}																
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +74,7 @@
 		<div class='main-container'>
 			<div class='row'>				
 				<center>
-					<p>Refreshing this page will deduct 1 from your tokens. </p>
+					<p>Refreshing this page will deduct 1 from your tokens.</p>
 					<h3><?php echo $title; ?></h3>                            
 					<img src='<?php echo $toon_path; ?>' class='toon-img'>
 					<p>by <?php echo $illustrator; ?></p>
@@ -80,7 +82,7 @@
 				</center>
 			</div>
 			<p>Number of Likes: <?php echo count_likes($webtoonID); ?></p>
-			<form action="view_webtoon.php?webtoon=<?php echo $webtoonID; ?>" method='POST'>			
+			<form action="../../controller/like_webtoon_controller.php" method='POST'>			
 				<button type='submit' class='btn btn-primary' name='like_webtoon'>Like</button>
 				<input type = 'hidden' name = 'webtoonID' value = '<?php echo $webtoonID; ?>'>
 				<input type = 'hidden' name = 'userID' value = '<?php echo $_SESSION['userID']; ?>'>
@@ -98,21 +100,12 @@
 	</script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </html>
-<?php
-			if (isset($_POST['like_webtoon'])) {     
-		    	//hidden
-		    	$webtoonID = trim($_POST['webtoonID']);
-		    	$userID = trim($_POST['userID']);
-
-		    	add_like($webtoonID);
-		    	add_token($userID);
-		    	header("location: view_webtoon.php?webtoon=$webtoonID");
-		    }			
+<?php				
 		}
 		else {
 			redirect("You don't have enough tokens. Take a survey to earn one!", "webtoons.php");
 		}
-	}
+	}	
     else {
         header("location: webtoons.php");
     }
