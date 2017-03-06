@@ -36,8 +36,7 @@
 <body>
 	<div id='top'>
 		<!-- NAVBAR-->
-		<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
+		<nav class="navbar navbar-inverse navbar-fixed-top">
 	    <div class="navbar-header">
 	      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 		        <span class="sr-only">Toggle navigation</span>
@@ -56,8 +55,8 @@
 		</nav>
 
 		<div class="jumbotron">
-		  	<h1>Hello, world!</h1>
-		  	<p>...</p>
+		  	<h1>Kamusta! Halina't sumama sa mga lakbay ni katsu!</h1>
+		  	<p>Gumawa ka na ng iyong account para masubaybayan ang mga kwento ni katsu!</p>
 		  	<p>
 		  		<!--Button Trigger MODAL-->
 		  		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myLoginModal">

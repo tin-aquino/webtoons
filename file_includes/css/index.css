@@ -2,18 +2,56 @@
 	height: 50px;
 	width: 120px;
 }
+body{
+	background:none;
+	background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+}
 
 .jumbotron{
 	margin-top: -19px;
 	padding: 50px;
-
+	background:none;
+	
 }
 
 .container{
 	padding: 10px;
+	background:none;
 }
 
 img{
 	width: 500px;
 	height: 500px;
 }
+
+.btn{
+	border-radius:15px;
+}
+
+
+.btn-primary{
+	border:solid #3E6BD9 2px;
+	background:none;
+	color:#3E6BD9;
+	-o-transition:.2s;
+  	-ms-transition:.2s;
+  	-moz-transition:.2s;
+  	-webkit-transition:.2s;
+}
+
+.btn-primary:hover{
+	background:#3E6BD9;
+	border:solid #3E6BD9 2px;
+	color:white;
+}
+
+/*.navbar{
+	background:rgba(255,255,255,1);
+	border-radius:none;
+	border:none;
+	
+}
+
+.navbar .navbar-collapse .navbar-nav li a{
+	color:#3E6BD9;
+}*/
