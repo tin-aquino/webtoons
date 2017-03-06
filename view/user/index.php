@@ -222,7 +222,7 @@
 		<div class="container">
 		<div class="row">
 			<div class='col-sm-6 col-md-4'>
-				<a href='../view_toons.php?webtoon=1'>
+				<a href='view_toons.php?webtoon=1'>
 			        <div class='thumbnail'>
 			            <img src="../../file_includes/images/1.jpg" alt='...'>
 			            <div class='caption'>
@@ -235,7 +235,7 @@
 		    </div>
 
 		    <div class='col-sm-6 col-md-4'>
-		    	<a href='../view_toons.php?webtoon=2'>
+		    	<a href='view_toons.php?webtoon=2'>
 			        <div class='thumbnail'>
 			            <img src="../../file_includes/images/2.jpg" alt='...'>
 			            <div class='caption'>
@@ -248,7 +248,7 @@
 		    </div>
 
 		    <div class='col-sm-6 col-md-4'>
-		    	<a href='../view_toons.php?webtoon=3'>
+		    	<a href='view_toons.php?webtoon=3'>
 			        <div class='thumbnail'>
 			            <img src="../../file_includes/images/3.jpg" alt='...'>
 			            <div class='caption'>

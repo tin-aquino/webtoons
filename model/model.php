@@ -1161,13 +1161,13 @@
 
     //upload webtoon 
     function insert_photo($title, $caption, $file_name, $final_file, $file_size, $file_type, 
-                                $illustrator, $question, $datetimeUpload, $tags, $status){
+                                $illustrator, $question, $choices, $datetimeUpload, $tags, $status){
         global $con;
 
         $query = "INSERT INTO wt_webtoon(title, caption, fileName, fileContent, fileSize, fileType,
-                        illustrator, question, datetimeUpload, tags, status)"
+                        illustrator, question, choices, datetimeUpload, tags, status)"
                     . "VALUES('$title', '$caption', '$file_name', '$final_file', '$file_size', '$file_type', 
-                                '$illustrator', '$question', '$datetimeUpload', '$tags', '$status')";
+                                '$illustrator', '$question', '$choices', '$datetimeUpload', '$tags', '$status')";
         $result = mysqli_query($con, $query);
         
         if ($result) {
@@ -1262,19 +1262,21 @@
     } 
 
     //update webtoon
-    function update_webtoon($webtoonID, $title, $caption, $illustrator, $question, $tags) {
+    function update_webtoon($webtoonID, $title, $caption, $illustrator, $choices, $question, $tags) {
         global $con; 
 
         $query_title = "UPDATE wt_webtoon SET title='$title' WHERE webtoonID = '$webtoonID'" ;
         $query_caption = "UPDATE wt_webtoon SET caption='$caption' WHERE webtoonID = '$webtoonID'" ;
         $query_illustrator = "UPDATE wt_webtoon SET illustrator='$illustrator' WHERE webtoonID = '$webtoonID'" ;
         $query_question = "UPDATE wt_webtoon SET question='$question' WHERE webtoonID = '$webtoonID'" ;
+        $query_choices = "UPDATE wt_webtoon SET choices='$choices' WHERE webtoonID = '$webtoonID'" ;
         $query_tags = "UPDATE wt_webtoon SET tags='$tags' WHERE webtoonID = '$webtoonID'" ;
 
         $result_title = mysqli_query($con, $query_title);
         $result_caption = mysqli_query($con, $query_caption);
         $result_illustrator = mysqli_query($con, $query_illustrator);
         $result_question = mysqli_query($con, $query_question);
+        $result_choices = mysqli_query($con, $query_choices);
         $result_tags = mysqli_query($con, $query_tags);       
     }
 
@@ -1298,7 +1300,7 @@
 
     function subtract_token($userID) {
         global $con;
-        
+
         $tokens = count_token($userID);
 
         $new_token = $tokens - 1;
@@ -1344,5 +1346,56 @@
         }
         
     }
+
+    //check if survey is already answered
+    function already_answered($webtoonID, $userID) {
+        global $con;
+
+        $query = "SELECT * FROM wt_responses WHERE webtoonID='$webtoonID' AND userID ='$userID'";
+
+        if ($result = mysqli_query($con, $query)) {
+            $count = mysqli_num_rows($result);  
+            if($count == 1) {
+                return true;                
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            echo mysqli_error($con);
+        }    
+    }
+
+    function insert_answer($webtoonID, $response, $userID){
+        global $con;
+
+        $query_details = "SELECT * from wt_user WHERE userID='$userID'";
+        $result_details = mysqli_query($con, $query_details); 
+        $row = mysqli_fetch_array($result_details);
+
+        $name = $row['fname'].", ".$row['mname'].", ".$row['lname'];
+        $birthday = $row['birthday'];
+        $sex = $row['sex'];
+        $city = $row['city'];
+        $province = $row['province'];
+        $email = $row['email'];
+
+        $today = date('Y-m-d H:i:s');
+        $age = $today - $birthday;
+
+        $query = "INSERT INTO wt_responses(webtoonID, userID, response, name, age, sex, city, province, email, dateAnswered)"
+                    . "VALUES('$webtoonID', '$userID', '$response', '$name', '$age', '$sex', '$city', '$province', '$email', '$today')";
+        $result = mysqli_query($con, $query);
+        
+        if ($result) {
+            return true;
+        }
+        else {
+            echo mysqli_error($con);
+        }
+    }
+
+    
 ?>
 

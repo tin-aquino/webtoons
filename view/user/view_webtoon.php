@@ -6,7 +6,7 @@
     require("../../model/model.php");  
     require('../../file_includes/dbconnect.php');
 
-    set_user_session($_SESSION['myID']);       
+    set_user_session($_SESSION['myID']);     
 
     if (isset($_POST['view_webtoon']) || $_SESSION['last_viewed'] == $_GET['webtoon']) {		
 	    //hidden
@@ -23,8 +23,13 @@
 	        $title = $row['title'];
 	        $illustrator = $row['illustrator'];
 	        $caption = $row['caption'];
+	        $question = $row['question'];
+	        $choices = $row['choices'];
 	        $fileContent = $row['fileContent'];
-			$toon_path = "../../file_includes/uploads/$fileContent"; 	
+			$toon_path = "../../file_includes/uploads/$fileContent"; 
+
+			$choices_array=explode(",",$choices);	
+			$count = count($choices_array);
 
 			if (isset($_POST['view_webtoon'])) {
 				subtract_token($userID);	
@@ -70,6 +75,159 @@
 		        </ul>
 		    </div>   	
 		</nav>
+
+		<!--UPDATE ACCOUNT MODAL-->
+		<div class="modal fade" id="myUpdateAccount" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  	<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">Login</h4>
+		      		</div>
+		      	<div class="modal-body">
+		        	<form action='../../controller/update_account_controller.php' method='POST'>
+		        		<div class="form-group">
+						    <label for="exampleInputEmail1">Last Name</label>
+						    <input type="text" class="form-control" name="lname" id="exampleInputEmail1" value="<?php echo get_field('lname', 'wt_user', $_SESSION['myID']);?>" required>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail1">First Name</label>
+						    <input type="text" class="form-control" name="fname" id="exampleInputEmail1" value="<?php echo get_field('fname', 'wt_user', $_SESSION['myID']);?>" required>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail1">Middle Name</label>
+						    <input type="text" class="form-control" name="mname" id="exampleInputEmail1" value="<?php echo get_field('mname', 'wt_user', $_SESSION['myID']);?>" required>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail1">Birthday</label>
+						    <input type="date" class="form-control" name="bday" id="exampleInputEmail1" value="<?php echo get_field('birthday', 'wt_user', $_SESSION['myID']);?>" required>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail1">Sex</label>
+						    <?php get_sex($_SESSION['myID']); ?>
+						    <!--<div class="radio">
+							    <label>
+							    <input type="radio" name="sex" id="optionsRadios1" value="M"> Male
+							    </label>
+						    </div>
+						    <div class="radio">
+							    <label>
+							    <input type="radio" name="sex" id="optionsRadios1" value="F"> Female
+							    </label>
+						    </div>-->
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">City</label>
+							<select class="form-control" name="city">
+								<?php get_city($_SESSION['myID']);
+								citylist();
+							?>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Province</label>
+							<select class="form-control" name="province">
+								<?php get_province($_SESSION['myID']);
+								provincelist();
+							?>
+							</select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail1">Email address</label>
+						    <input type="email" name="email" class="form-control" id="exampleInputEmail1" value="<?php echo get_field('email', 'wt_user', $_SESSION['myID']);?>" required>
+						</div>
+						<div class="form-group">
+						<button type='submit' class="btn btn-default" name='update_account' value='Update'>
+						Update Account
+						</button>
+						</div>
+					</form>
+		      	</div>
+		    	</div>
+		  	</div>
+		</div>
+
+		<!--UPDATE SECURITY QUESTIONS-->
+		<div class="modal fade" id="myUpdateSecurityQ" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  	<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">Update Security Questions</h4>
+		      		</div>
+		      	<div class="modal-body">
+		        	<form action='../../controller/update_sq_controller.php' method='POST'>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Security Question 1</label>
+							<select class="form-control" name="sq1">
+								<?php 
+								get_secQ1($_SESSION['myID']);
+							?>
+							</select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail1">Answer 1</label>
+						    <input type="text" class="form-control" name="a1" id="exampleInputEmail1" value = "<?php echo get_field('a1', 'wt_secqa', $_SESSION['myID']);?>" required>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Security Question 2</label>
+							<select class="form-control" name="sq2">
+								<?php 
+								get_secQ2($_SESSION['myID']);
+							?>
+							</select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail1">Answer 1</label>
+						    <input type="text" class="form-control" name="a2" id="exampleInputEmail1" value = "<?php echo get_field('a2', 'wt_secqa', $_SESSION['myID']);?>" required>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputPassword1">Password</label>
+						    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+						</div>
+						<div class="form-group">
+						<button type='submit' class="btn btn-default" name='update_sq' value='Update'>
+						Update
+						</button>
+						</div>
+					</form>
+		      	</div>
+		    	</div>
+		  	</div>
+		</div>
+
+		<!--UPDATE PASSWORD-->
+		<div class="modal fade" id="myUpdatePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  	<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">Update Security Questions</h4>
+		      		</div>
+		      	<div class="modal-body">
+		        	<form action='../../controller/update_password_controller.php' method='POST'>
+						<div class="form-group">
+						    <label for="exampleInputPassword1">Old Password</label>
+						    <input type="password" name="oldpass" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputPassword1">New Password</label>
+						    <input type="password" name="newpass1" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputPassword1">Re-type New Password</label>
+						    <input type="password" name="newpass2" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+						</div>
+						<div class="form-group">
+						<button type='submit' class="btn btn-default" name='change_pass' value='Update'>
+						Update
+						</button>
+						</div>
+					</form>
+		      	</div>
+		    	</div>
+		  	</div>
+		</div>
 					
 		<div class='main-container'>
 			<div class='row'>				
@@ -88,8 +246,43 @@
 				<input type = 'hidden' name = 'userID' value = '<?php echo $_SESSION['userID']; ?>'>
 			</form>
 			<button class='btn btn-success'>Share</button>
-			<button class='get-token-btn'>Get Token</button>
+			<a href="#" class='get-token-btn' role='button' data-toggle="modal" data-target="#getToken">Get Token</a>
 		</div>";
+
+		<!--GET TOKEN-->
+		<div class="modal fade" id="getToken" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  	<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">Answer Survey</h4>
+		      		</div>
+		      	<div class="modal-body">
+		        	<form action='../../controller/answer_survey_controller.php' method='POST'>
+						<div class="form-group">
+						    <blockquote>
+			        			<p><?php echo $question; ?></p>
+			        		</blockquote>
+						    <?php 
+		                    $j = 0;
+		                    while($j < $count){    
+		                    	$choice = $choices_array[$j];                                        
+		                        echo "<input type='radio' name='answer' id='optionsRadios1' value='$choice'> $choice <br>";
+
+		                        $j++;
+		                    }
+		                    ?>
+		                    <input type = 'hidden' name = 'webtoonID' value = '<?php echo $webtoonID; ?>'>
+						</div>					
+						<button type='submit' class="btn btn-default" name='answer_survey'>
+						Submit
+						</button>
+						</div>
+					</form>
+		      	</div>
+		    	</div>
+		  	</div>
+		</div>
 
 	</body>
 
