@@ -21,4 +21,7 @@
     		redirect("Kindly input all fields.", "../view/employee/index.php");                      
     	}
     }
+    else {
+        header("location: ../");
+    }
 ?>

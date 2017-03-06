@@ -11,7 +11,7 @@
     	header("location: ../view/user/view_webtoon.php?webtoon=$webtoonID");
     }
     else {
-        header("location: webtoons.php");
+        header("location: ../");
     }
 
 ?>
