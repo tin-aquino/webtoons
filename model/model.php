@@ -1298,7 +1298,7 @@
 
     function subtract_token($userID) {
         global $con;
-
+        
         $tokens = count_token($userID);
 
         $new_token = $tokens - 1;
