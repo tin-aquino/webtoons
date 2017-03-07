@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2017 at 09:32 AM
+-- Generation Time: Mar 07, 2017 at 12:20 PM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -132,20 +132,22 @@ INSERT INTO `wt_employee` (`employeeID`, `accountID`, `idnum`, `lname`, `fname`,
 CREATE TABLE IF NOT EXISTS `wt_likes` (
 `likeID` int(11) NOT NULL,
   `webtoonID` int(11) NOT NULL,
-  `likes` tinyint(1) NOT NULL
+  `userID` int(11) NOT NULL,
+  `likes` tinyint(1) NOT NULL,
+  `dateLiked` datetime NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `wt_likes`
 --
 
-INSERT INTO `wt_likes` (`likeID`, `webtoonID`, `likes`) VALUES
-(1, 1, 25),
-(2, 2, 8),
-(3, 3, 5),
-(4, 8, 9),
-(5, 9, 16),
-(6, 7, 9);
+INSERT INTO `wt_likes` (`likeID`, `webtoonID`, `userID`, `likes`, `dateLiked`) VALUES
+(1, 1, 1, 1, '2017-03-07 00:00:00'),
+(2, 8, 1, 1, '2017-03-07 12:04:59'),
+(3, 1, 2, 1, '2017-03-07 12:08:35'),
+(4, 8, 2, 1, '2017-03-07 12:16:16'),
+(5, 7, 2, 1, '2017-03-07 12:16:50'),
+(6, 9, 2, 1, '2017-03-07 12:20:17');
 
 -- --------------------------------------------------------
 
@@ -158,22 +160,18 @@ CREATE TABLE IF NOT EXISTS `wt_responses` (
   `webtoonID` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   `response` varchar(100) NOT NULL,
-  `name` varchar(250) NOT NULL,
   `age` int(11) NOT NULL,
-  `sex` enum('M','F') NOT NULL,
-  `city` varchar(50) NOT NULL,
-  `province` varchar(50) NOT NULL,
-  `email` varchar(100) NOT NULL,
   `dateAnswered` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `wt_responses`
 --
 
-INSERT INTO `wt_responses` (`responseID`, `webtoonID`, `userID`, `response`, `name`, `age`, `sex`, `city`, `province`, `email`, `dateAnswered`) VALUES
-(1, 7, 2, 'yes', 'Zara Mikaela, de Luna, Tudio', 21, 'F', 'calamba', 'laguna', 'zawa@gmail.com', '2017-03-06 12:35:15'),
-(2, 2, 2, 'red', 'Zara Mikaela, de Luna, Tudio', 21, 'F', 'calamba', 'laguna', 'zawa@gmail.com', '2017-03-06 12:36:09');
+INSERT INTO `wt_responses` (`responseID`, `webtoonID`, `userID`, `response`, `age`, `dateAnswered`) VALUES
+(1, 7, 2, 'yes', 21, '2017-03-06 12:35:15'),
+(2, 2, 2, 'red', 21, '2017-03-06 12:36:09'),
+(3, 7, 1, 'yes', 21, '2017-03-07 03:35:50');
 
 -- --------------------------------------------------------
 
@@ -260,8 +258,8 @@ CREATE TABLE IF NOT EXISTS `wt_user` (
 --
 
 INSERT INTO `wt_user` (`userID`, `accountID`, `lname`, `fname`, `mname`, `birthday`, `sex`, `city`, `province`, `email`, `token`) VALUES
-(1, 3, 'Cruz', 'Ella May', 'Mailom111', '1996-05-21', 'M', 'Bogo', 'Bulacan', 'mamaaaaw@gmail.com', 35),
-(2, 4, 'Tudio', 'Zara Mikaela', 'de Luna', '1996-04-05', 'F', 'calamba', 'laguna', 'zawa@gmail.com', 8),
+(1, 3, 'Cruz', 'Ella May', 'Mailom111', '1996-05-21', 'M', 'Bogo', 'Bulacan', 'mamaaaaw@gmail.com', 29),
+(2, 4, 'Tudio', 'Zara Mikaela', 'de Luna', '1996-04-05', 'F', 'calamba', 'laguna', 'zawa@gmail.com', 3),
 (3, 11, 'Cortez', 'Rhealyn', 'Awanin', '1996-11-11', 'F', 'Tanauan', 'Cortez', 'weya@gmail.com', 10),
 (4, 12, 'Ambrocio', 'Jessee Clarence', 'Balleras', '2014-05-14', 'M', 'Calamba', 'Ambrocio', 'jec@gmail.com', 10),
 (5, 13, 'Alba', 'Charles Joshua', 'Mendoza', '1997-08-30', 'M', 'Batangas City', 'Alba', 'josh@gmail.com', 10),
@@ -338,7 +336,7 @@ ALTER TABLE `wt_employee`
 -- Indexes for table `wt_likes`
 --
 ALTER TABLE `wt_likes`
- ADD PRIMARY KEY (`likeID`), ADD KEY `webtoonID` (`webtoonID`);
+ ADD PRIMARY KEY (`likeID`), ADD KEY `webtoonID` (`webtoonID`), ADD KEY `userID` (`userID`);
 
 --
 -- Indexes for table `wt_responses`
@@ -403,7 +401,7 @@ MODIFY `likeID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 -- AUTO_INCREMENT for table `wt_responses`
 --
 ALTER TABLE `wt_responses`
-MODIFY `responseID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `responseID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `wt_secqa`
 --
