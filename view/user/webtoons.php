@@ -57,9 +57,7 @@
 		        	<!--<li><a href="../../controller/logout_controller.php">Logout</a></li>-->
 		        </ul>
 		    </div>   	
-		</nav>
-
-		
+		</nav>		
 
 		<!--UPDATE ACCOUNT MODAL-->
 		<div class="modal fade" id="myUpdateAccount" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -260,9 +258,7 @@
 			        			<p>Are you sure you want to view <?php echo $title; ?>? 
 			        				<br> Answering "Yes" will deduct 1 from your tokens.</p>
 			        		</blockquote>
-							<div class="form-group"></div>
-							<input type = 'hidden' name = 'webtoonID' value = '<?php echo $webtoonID; ?>'>
-							<input type = 'hidden' name = 'userID' value = '<?php echo $_SESSION['userID']; ?>'>
+							<div class="form-group"></div>							
 							<button type='submit' class="btn btn-primary" name='view_webtoon'>
 							Yes
 							</button>

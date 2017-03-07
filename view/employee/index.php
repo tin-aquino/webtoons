@@ -224,7 +224,11 @@
 						<div class="form-group">
 							    <label for="exampleInputEmail1">Question</label>
 							    <input type="text" class="form-control" name="question" id="exampleInputEmail1" placeholder="Question" required>
-							</div>
+						</div>
+						<div class="form-group">
+							    <label for="exampleInputEmail1">Choices</label>
+							    <textarea name="choices" class="form-control" rows="3" placeholder="Separated by commas"></textarea>
+						</div>
 						<div class="form-group">
 						    <label for="exampleInputEmail1">Tags</label>
 						    <textarea name="tags" class="form-control" rows="3" placeholder="Separated by commas"></textarea>
@@ -260,6 +264,7 @@
 	                $file = $values['fileContent'];                
 	                $illustrator = $values['illustrator'];
 	                $question = $values['question'];
+	                $choices = $values['choices'];
 	                $tags = $values['tags'];
 	    ?>
 		
@@ -304,6 +309,10 @@
 							<div class="form-group">
 							    <label for="exampleInputEmail1">Question</label>
 							    <input type="text" class="form-control" name="question" id="exampleInputEmail1" value="<?php echo $question; ?>" required>
+							</div>
+							<div class="form-group">
+							    <label for="exampleInputEmail1">Choices</label>
+							    <textarea name="choices" class="form-control" rows="3" placeholder="Separated by commas"><?php echo $choices; ?></textarea>
 							</div>
 							<div class="form-group">
 							    <label for="exampleInputEmail1">Tags</label>

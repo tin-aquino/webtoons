@@ -1,33 +1,27 @@
-<?php
-	if(!isset($_COOKIE['loggedin_user'])){
+<?php 
+    if(!isset($_COOKIE['loggedin_user'])){
         header("location:../../index.php");
     }
-    
+
     require("../../model/model.php");  
     require('../../file_includes/dbconnect.php');
 
+    set_user_session($_SESSION['myID']);   
 
-    set_user_session($_SESSION['myID']);      
+    $toonID = $_GET['webtoon'];  
+
+	$toon_path = "../../file_includes/images/".$toonID.".jpg"; 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Home</title>
-	<script
-	src="https://code.jquery.com/jquery-3.1.1.min.js"
-	integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-	crossorigin="anonymous">	
-	</script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="../../file_includes/css/updatewebtoons.css">
-	<link rel="stylesheet" type="text/css" href="../../file_includes/css/index.css">
-
-	
-</head>
-<body>
+<html>
+	<head>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../../file_includes/css/toon-view.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="../../file_includes/css/updatewebtoons.css">
+	</head>
+	<body>
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
 		    <div class="navbar-header">
@@ -37,7 +31,7 @@
 			        <span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
 		      	</button>
-		      	<a class="navbar-brand" href="#"><span><img class="brand" src="../../file_includes/images/katsu.gif"><span class="red">Katsu</span>toons</span></a>
+		      	<a class="navbar-brand" href="#">Brand</a>
 		    </div>
 	  		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      	<ul class="nav navbar-nav">
@@ -211,55 +205,19 @@
 		    	</div>
 		  	</div>
 		</div>
-
-		<div class="jumbotron" id="jumbotron">
-			<h1>Welcome, User!</h1>
-			<p>Below are the featured webtoons!</p>
-			<p>
-			    <a href="webtoons.php" role="button" class="btn btn-primary btn-lg">View All</a>
-			</p>
-		</div>
-		<div class="container">
-		<div class="row">
-			<div class='col-sm-6 col-md-4'>
-				<a href='view_toons.php?webtoon=1'>
-			        <div class='thumbnail'>
-			            <img class="img-responsive" src="../../file_includes/images/1.jpg" alt='...'>
-			            <div class='caption'>
-			                <h3>Kitkat</h3>
-			                <p>Hippocrates</p>
-			                <p>Life is short, the art long.</p>                                                                        
-			            </div>
-			        </div>
-		    	</a>
-		    </div>
-
-		    <div class='col-sm-6 col-md-4'>
-		    	<a href='view_toons.php?webtoon=2'>
-			        <div class='thumbnail'>
-			            <img class="img-responsive" src="../../file_includes/images/2.jpg" alt='...'>
-			            <div class='caption'>
-			                <h3>Kitty</h3>
-			                <p>William Ellery Channing</p>
-			                <p>How easy to be amiable in the midst of happiness and success.</p>                                                                        
-			            </div>
-			        </div>
-			    </a>
-		    </div>
-
-		    <div class='col-sm-6 col-md-4'>
-		    	<a href='view_toons.php?webtoon=3'>
-			        <div class='thumbnail'>
-			            <img class="img-responsive" src="../../file_includes/images/3.jpg" alt='...'>
-			            <div class='caption'>
-			                <h3>Cutie</h3>
-			                <p>Francis Bacon</p>
-			                <p>The job of the artist is always to deepen the mystery.</p>                                                                        
-			            </div>
-			        </div>
-		    	</a>
-		    </div>
-		</div>
-		</div>
-</body>
+		
+		<div class='main-container'>
+			<div class='row'>
+				<center>
+					<img src='<?php echo $toon_path; ?>' class='toon-img'>
+				</center>
+			</div>
+		</div>		
+	</body>
+	<script
+		src="https://code.jquery.com/jquery-3.1.1.min.js"
+		integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+		crossorigin="anonymous">	
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </html>
