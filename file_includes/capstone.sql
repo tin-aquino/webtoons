@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2017 at 09:37 PM
+-- Generation Time: Mar 07, 2017 at 09:32 AM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -133,17 +133,19 @@ CREATE TABLE IF NOT EXISTS `wt_likes` (
 `likeID` int(11) NOT NULL,
   `webtoonID` int(11) NOT NULL,
   `likes` tinyint(1) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `wt_likes`
 --
 
 INSERT INTO `wt_likes` (`likeID`, `webtoonID`, `likes`) VALUES
-(1, 1, 3),
-(2, 2, 3),
-(3, 3, 2),
-(4, 8, 2);
+(1, 1, 25),
+(2, 2, 8),
+(3, 3, 5),
+(4, 8, 9),
+(5, 9, 16),
+(6, 7, 9);
 
 -- --------------------------------------------------------
 
@@ -152,15 +154,26 @@ INSERT INTO `wt_likes` (`likeID`, `webtoonID`, `likes`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `wt_responses` (
-`answerID` int(11) NOT NULL,
+`responseID` int(11) NOT NULL,
   `webtoonID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `response` varchar(100) NOT NULL,
   `name` varchar(250) NOT NULL,
-  `birthday` date NOT NULL,
+  `age` int(11) NOT NULL,
   `sex` enum('M','F') NOT NULL,
   `city` varchar(50) NOT NULL,
   `province` varchar(50) NOT NULL,
-  `email` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `email` varchar(100) NOT NULL,
+  `dateAnswered` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `wt_responses`
+--
+
+INSERT INTO `wt_responses` (`responseID`, `webtoonID`, `userID`, `response`, `name`, `age`, `sex`, `city`, `province`, `email`, `dateAnswered`) VALUES
+(1, 7, 2, 'yes', 'Zara Mikaela, de Luna, Tudio', 21, 'F', 'calamba', 'laguna', 'zawa@gmail.com', '2017-03-06 12:35:15'),
+(2, 2, 2, 'red', 'Zara Mikaela, de Luna, Tudio', 21, 'F', 'calamba', 'laguna', 'zawa@gmail.com', '2017-03-06 12:36:09');
 
 -- --------------------------------------------------------
 
@@ -247,8 +260,8 @@ CREATE TABLE IF NOT EXISTS `wt_user` (
 --
 
 INSERT INTO `wt_user` (`userID`, `accountID`, `lname`, `fname`, `mname`, `birthday`, `sex`, `city`, `province`, `email`, `token`) VALUES
-(1, 3, 'Cruz', 'Ella May', 'Mailom111', '1996-05-21', 'M', 'Bogo', 'Bulacan', 'mamaaaaw@gmail.com', 5),
-(2, 4, 'Tudio', 'Zara Mikaela', 'de Luna', '1996-04-05', 'F', 'calamba', 'laguna', 'zawa@gmail.com', 10),
+(1, 3, 'Cruz', 'Ella May', 'Mailom111', '1996-05-21', 'M', 'Bogo', 'Bulacan', 'mamaaaaw@gmail.com', 35),
+(2, 4, 'Tudio', 'Zara Mikaela', 'de Luna', '1996-04-05', 'F', 'calamba', 'laguna', 'zawa@gmail.com', 8),
 (3, 11, 'Cortez', 'Rhealyn', 'Awanin', '1996-11-11', 'F', 'Tanauan', 'Cortez', 'weya@gmail.com', 10),
 (4, 12, 'Ambrocio', 'Jessee Clarence', 'Balleras', '2014-05-14', 'M', 'Calamba', 'Ambrocio', 'jec@gmail.com', 10),
 (5, 13, 'Alba', 'Charles Joshua', 'Mendoza', '1997-08-30', 'M', 'Batangas City', 'Alba', 'josh@gmail.com', 10),
@@ -272,6 +285,7 @@ CREATE TABLE IF NOT EXISTS `wt_webtoon` (
   `fileType` varchar(100) NOT NULL,
   `illustrator` varchar(100) NOT NULL,
   `question` varchar(250) NOT NULL,
+  `choices` varchar(250) NOT NULL,
   `datetimeUpload` datetime NOT NULL,
   `tags` varchar(150) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1'
@@ -281,16 +295,16 @@ CREATE TABLE IF NOT EXISTS `wt_webtoon` (
 -- Dumping data for table `wt_webtoon`
 --
 
-INSERT INTO `wt_webtoon` (`webtoonID`, `title`, `caption`, `fileName`, `fileContent`, `fileSize`, `fileType`, `illustrator`, `question`, `datetimeUpload`, `tags`, `status`) VALUES
-(1, 'Kitkat"s', 'The quick brown fox jumps over the lazy dog near the riverbank.', '1.jpg', '4468-1.jpg', 35859, 'image/jpeg', 'Jose Rizal', 'Why are you here?', '2017-02-26 21:57:26', 'cute, orange, cat', 1),
-(2, 'Meow', 'For the mind disturbed, the still beauty of dawn is nature''s finest balm.', '2.jpg', '16230-2.jpg', 24875, 'image/jpeg', 'Edwin Way Teal', 'Why are you not working?', '2017-02-26 22:15:37', 'cat, cute, dark', 1),
-(3, 'Kitty', 'Monday afternoons call for something sweet, moist and dense like #CostaCoffeePH new treats.', '3.jpg', '84785-3.jpg', 72049, 'image/jpeg', 'Costa', 'How old are you?', '2017-02-27 09:31:01', 'white, cute, cat', 1),
-(4, 'Saranghaea', 'Home can be trouble to non-cubicle dwellers so coffee shops became a sanctuary for those determined to hustle. a', '1LhVIDQ.png', '11012-1lhvidq.png', 58251, 'image/png', 'Esquirea', '', '2017-02-27 09:32:49', 'clipart, heart', 0),
-(5, 'Meme', 'When youâ€™re not having one of their famous Ghana chocolate-spiked Mochas, try a sip of their Chai Tea LattÃ© with a slice of Bruce Bogtrotter cake.', '893281ed2704064eba587677ecb85767.jpg', '67310-893281ed2704064eba587677ecb85767.jpg', 21747, 'image/jpeg', 'Tobys Estate', '', '2017-02-27 10:38:38', 'meme, dog, cute', 0),
-(6, 'Tiredzzzz', 'Wear our new and improved Official ICS Shirt with pride! Guaranteed quality products for this academic year.', '10406555_933418663379864_324285588679038312_n.jpg', '93626-10406555_933418663379864_324285588679038312_n.jpg', 38419, 'image/jpeg', 'ICS', '', '2017-03-02 06:05:30', 'meme, school', 0),
-(7, 'Caaaaaaat', 'Thanks to 3D printing, scientists can now recreate any organ in the human body.', '4468-1.jpg', '75682-4468-1.jpg', 35859, 'image/jpeg', 'Insider', 'Where art thou?', '2017-03-03 04:19:45', 'cat, orange, cute', 1),
-(8, 'Hello Kitty', 'Knowing others is wisdom, knowing yourself is Enlightenment.', '16230-2.jpg', '74126-16230-2.jpg', 24875, 'image/jpeg', 'Lao Tzu', 'Who are you?', '2017-03-03 04:36:13', 'black, cat', 1),
-(9, 'Kit', 'Work like you don''t need the money. Love like you''ve never been hurt. Dance like nobody''s watching.', '84785-3.jpg', '20979-84785-3.jpg', 72049, 'image/jpeg', 'Satchel Paige', 'How are you?', '2017-03-03 04:52:55', 'cat, white, cute', 1);
+INSERT INTO `wt_webtoon` (`webtoonID`, `title`, `caption`, `fileName`, `fileContent`, `fileSize`, `fileType`, `illustrator`, `question`, `choices`, `datetimeUpload`, `tags`, `status`) VALUES
+(1, 'Kitkat', 'The quick brown fox jumps over the lazy dog near the riverbank.', '1.jpg', '4468-1.jpg', 35859, 'image/jpeg', 'Jose Rizal', 'Why are you here?', 'to have fun, to research, to kill time', '2017-02-26 21:57:26', 'cute, orange, cat', 1),
+(2, 'Meow', 'For the mind disturbed, the still beauty of dawn is nature''s finest balm.', '2.jpg', '16230-2.jpg', 24875, 'image/jpeg', 'Edwin Way Teal', 'What''s your favorite color?', 'red, blue, green, black', '2017-02-26 22:15:37', 'cat, cute, dark', 1),
+(3, 'Kitty', 'Monday afternoons call for something sweet, moist and dense like #CostaCoffeePH new treats.', '3.jpg', '84785-3.jpg', 72049, 'image/jpeg', 'Costa', 'How old are you?', 'less than 5, 5-10, 10-18, greater than 18', '2017-02-27 09:31:01', 'white, cute, cat', 1),
+(4, 'Saranghaea', 'Home can be trouble to non-cubicle dwellers so coffee shops became a sanctuary for those determined to hustle. a', '1LhVIDQ.png', '11012-1lhvidq.png', 58251, 'image/png', 'Esquirea', '', '', '2017-02-27 09:32:49', 'clipart, heart', 0),
+(5, 'Meme', 'When youâ€™re not having one of their famous Ghana chocolate-spiked Mochas, try a sip of their Chai Tea LattÃ© with a slice of Bruce Bogtrotter cake.', '893281ed2704064eba587677ecb85767.jpg', '67310-893281ed2704064eba587677ecb85767.jpg', 21747, 'image/jpeg', 'Tobys Estate', '', '', '2017-02-27 10:38:38', 'meme, dog, cute', 0),
+(6, 'Tiredzzzz', 'Wear our new and improved Official ICS Shirt with pride! Guaranteed quality products for this academic year.', '10406555_933418663379864_324285588679038312_n.jpg', '93626-10406555_933418663379864_324285588679038312_n.jpg', 38419, 'image/jpeg', 'ICS', '', '', '2017-03-02 06:05:30', 'meme, school', 0),
+(7, 'Caaaaaaat', 'Thanks to 3D printing, scientists can now recreate any organ in the human body.', '4468-1.jpg', '75682-4468-1.jpg', 35859, 'image/jpeg', 'Insider', 'Do you have webcam at home?', 'yes, no', '2017-03-03 04:19:45', 'cat, orange, cute', 1),
+(8, 'Hello Kitty', 'Knowing others is wisdom, knowing yourself is Enlightenment.', '16230-2.jpg', '74126-16230-2.jpg', 24875, 'image/jpeg', 'Lao Tzu', 'Do you have internet?', 'yes, no', '2017-03-03 04:36:13', 'black, cat', 1),
+(9, 'Kit', 'Work like you don''t need the money. Love like you''ve never been hurt. Dance like nobody''s watching.', '84785-3.jpg', '20979-84785-3.jpg', 72049, 'image/jpeg', 'Satchel Paige', 'Do you own a personal computer?', 'yes, no', '2017-03-03 04:52:55', 'cat, white, cute', 1);
 
 --
 -- Indexes for dumped tables
@@ -330,7 +344,7 @@ ALTER TABLE `wt_likes`
 -- Indexes for table `wt_responses`
 --
 ALTER TABLE `wt_responses`
- ADD PRIMARY KEY (`answerID`), ADD KEY `questionID` (`webtoonID`), ADD KEY `webtoonID` (`webtoonID`), ADD KEY `webtoonID_2` (`webtoonID`);
+ ADD PRIMARY KEY (`responseID`), ADD KEY `questionID` (`webtoonID`), ADD KEY `webtoonID` (`webtoonID`), ADD KEY `webtoonID_2` (`webtoonID`), ADD KEY `userID` (`userID`);
 
 --
 -- Indexes for table `wt_secqa`
@@ -384,12 +398,12 @@ MODIFY `employeeID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `wt_likes`
 --
 ALTER TABLE `wt_likes`
-MODIFY `likeID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `likeID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `wt_responses`
 --
 ALTER TABLE `wt_responses`
-MODIFY `answerID` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `responseID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `wt_secqa`
 --
@@ -442,7 +456,8 @@ ADD CONSTRAINT `wt_likes_ibfk_1` FOREIGN KEY (`webtoonID`) REFERENCES `wt_webtoo
 -- Constraints for table `wt_responses`
 --
 ALTER TABLE `wt_responses`
-ADD CONSTRAINT `wt_responses_ibfk_1` FOREIGN KEY (`webtoonID`) REFERENCES `wt_webtoon` (`webtoonID`);
+ADD CONSTRAINT `wt_responses_ibfk_1` FOREIGN KEY (`webtoonID`) REFERENCES `wt_webtoon` (`webtoonID`),
+ADD CONSTRAINT `wt_responses_ibfk_2` FOREIGN KEY (`userID`) REFERENCES `wt_user` (`userID`);
 
 --
 -- Constraints for table `wt_secqa`
