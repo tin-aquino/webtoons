@@ -43,6 +43,7 @@
 		<link rel="stylesheet" type="text/css" href="../../file_includes/css/toon-view.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="../../file_includes/css/updatewebtoons.css">
+		<link rel="stylesheet" type="text/css" href="../../file_includes/css/index.css">
 	</head>
 	<body>
 		<nav class="navbar navbar-inverse">
@@ -54,7 +55,7 @@
 			        <span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
 		      	</button>
-		      	<a class="navbar-brand" href="#">Brand</a>
+		      	<a class="navbar-brand" href="#"><span><img class="brand" src="../../file_includes/images/katsu.gif"><span class="red">Katsu</span>toons</span></a>
 		    </div>
 	  		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      	<ul class="nav navbar-nav">
@@ -72,6 +73,7 @@
 				            <li><a href="../../controller/logout_controller.php">Logout</a></li>
 				        </ul>
 				    </li>
+		        	<!--<li><a href="../../controller/logout_controller.php">Logout</a></li>-->
 		        </ul>
 		    </div>   	
 		</nav>
@@ -240,12 +242,15 @@
 				</center>
 			</div>
 			<p>Number of Likes: <?php echo count_likes($webtoonID); ?></p>
-			<form action="../../controller/like_webtoon_controller.php" method='POST'>			
+			<form action="../../controller/like_webtoon_controller.php" method='POST'>
+			<div class="row">
 				<button type='submit' class='btn btn-primary' name='like_webtoon'>Like</button>
+				<a href="#" class='btn btn-default' role='button' data-toggle="modal" data-target="#getToken">Get Token</a>
+			</div>			
 				<input type = 'hidden' name = 'webtoonID' value = '<?php echo $webtoonID; ?>'>
 				<input type = 'hidden' name = 'userID' value = '<?php echo $_SESSION['userID']; ?>'>
 			</form>			
-			<a href="#" class='get-token-btn' role='button' data-toggle="modal" data-target="#getToken">Get Token</a>
+			
 		</div>
 
 		<!--GET TOKEN-->
