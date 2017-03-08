@@ -1,7 +1,7 @@
-.btn-lg{
+/*.btn-lg{
 	height: 50px;
 	width: 120px;
-}
+}*/
 body{
 	background: #ECE9E6; /* fallback for old browsers */
 	background: -webkit-linear-gradient(to left, #ECE9E6 , #FFFFFF); /* Chrome 10-25, Safari 5.1-6 */
@@ -42,6 +42,38 @@ img{
 .btn-primary:hover{
 	background:#3E6BD9;
 	border:solid #3E6BD9 2px;
+	color:white;
+}
+
+.btn-danger{
+	border:solid #CB3059 2px;
+	background:none;
+	color:#CB3059;
+	-o-transition:.2s;
+  	-ms-transition:.2s;
+  	-moz-transition:.2s;
+  	-webkit-transition:.2s;	
+}
+
+.btn-danger:hover{
+	background:#CB3059;
+	border:solid #CB3059 2px;
+	color:white;
+}
+
+.btn-default{
+	border:solid #D4D9D5 2px;
+	background:none;
+	color:#D4D9D5;
+	-o-transition:.2s;
+  	-ms-transition:.2s;
+  	-moz-transition:.2s;
+  	-webkit-transition:.2s;
+}
+
+.btn-default:hover{
+	background:#D4D9D5;
+	border:solid #D4D9D5 2px;
 	color:white;
 }
 

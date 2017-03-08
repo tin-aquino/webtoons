@@ -22,10 +22,46 @@
 	</script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="../../file_includes/css/updatewebtoons.css">
+	<link rel="stylesheet" type="text/css" href="../../file_includes/css/index.css">
+	<link rel="stylesheet" type="text/css" href="../../file_includes/css/index2.css">
+	<!--<link rel="stylesheet" type="text/css" href="../../file_includes/css/updatewebtoons.css">-->
+	
 	
 </head>
-<body>
+<body><nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+		    <div class="navbar-header">
+		      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+		      	</button>
+		      	<a class="navbar-brand" href="#"><span><img class="brand" src="../../file_includes/images/katsu.gif"><span class="red">Katsu</span>toons</span></a>
+		    </div>
+	  		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      	<ul class="nav navbar-nav">
+		      		<li><a href="index.php">Webtoons</a></li>			
+					<li><a href="summary.php">Summary</a></li>			
+		        </ul>
+		        <ul class="nav navbar-nav navbar-right">
+		        	<li class="dropdown">
+		        		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Account <span class="caret"></span></a>
+				        <ul class="dropdown-menu">
+				            <li><a href="#" data-toggle="modal" data-target="#myUpdateAccount">Update Account Information</a></li>
+				            <li><a href="#" data-toggle="modal" data-target="#myUpdateSecurityQ">Update Security Questions</a></li>
+				            <li><a href="#" data-toggle="modal" data-target="#myUpdatePassword">Update Password</a></li>
+				            <li role="separator" class="divider"></li>
+				            <li><a href="../../controller/logout_controller.php">Logout</a></li>
+				        </ul>
+				    </li>
+		        	<!--<li><a href="../../controller/logout_controller.php">Logout</a></li>-->
+		        </ul>
+		    </div>   	
+		</nav>
+
+
+<!--
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
 		    <div class="navbar-header">
@@ -53,12 +89,12 @@
 				            <li><a href="../../controller/logout_controller.php">Logout</a></li>
 				        </ul>
 				    </li>
-		        	<!--<li><a href="../../controller/logout_controller.php">Logout</a></li>-->
+		        	<li><a href="../../controller/logout_controller.php">Logout</a></li>
 		        </ul>
 		        
 		    </div>   	
 		</nav>
-
+-->
 		<!--MODALS-->
 
 		<!--UPDATE ACCOUNT MODAL-->
