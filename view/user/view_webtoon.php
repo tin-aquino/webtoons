@@ -271,7 +271,7 @@
 		                    $j = 0;
 		                    while($j < $count){    
 		                    	$choice = $choices_array[$j];                                        
-		                        echo "<input type='radio' name='answer' id='optionsRadios1' value='$choice'> $choice <br>";
+		                        echo "<input type='radio' name='answer' id='optionsRadios1' value='$choice' required> $choice <br>";
 
 		                        $j++;
 		                    }
