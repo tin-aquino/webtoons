@@ -244,10 +244,9 @@
 				<button type='submit' class='btn btn-primary' name='like_webtoon'>Like</button>
 				<input type = 'hidden' name = 'webtoonID' value = '<?php echo $webtoonID; ?>'>
 				<input type = 'hidden' name = 'userID' value = '<?php echo $_SESSION['userID']; ?>'>
-			</form>
-			<button class='btn btn-success'>Share</button>
+			</form>			
 			<a href="#" class='get-token-btn' role='button' data-toggle="modal" data-target="#getToken">Get Token</a>
-		</div>";
+		</div>
 
 		<!--GET TOKEN-->
 		<div class="modal fade" id="getToken" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

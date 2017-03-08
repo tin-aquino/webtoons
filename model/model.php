@@ -1320,17 +1320,7 @@
         $result_newtoken = mysqli_query($con, $query_newtoken);
     }
 
-    function count_likes($webtoonID) { 
-        global $con;
-
-        $query = "SELECT * from wt_likes WHERE webtoonID='$webtoonID'";
-        $result = mysqli_query($con, $query); 
-        $row = mysqli_fetch_array($result);
-
-        return $row['likes'];
-    }
-
-    function add_like($webtoonID) {
+   /* function add_like($webtoonID) {
         global $con;
 
         $likes = count_likes($webtoonID);
@@ -1345,7 +1335,7 @@
             $result = mysqli_query($con, $query);
         }
         
-    }
+    }*/
 
     //check if survey is already answered
     function already_answered($webtoonID, $userID) {
@@ -1373,19 +1363,13 @@
         $query_details = "SELECT * from wt_user WHERE userID='$userID'";
         $result_details = mysqli_query($con, $query_details); 
         $row = mysqli_fetch_array($result_details);
-
-        $name = $row['fname'].", ".$row['mname'].", ".$row['lname'];
-        $birthday = $row['birthday'];
-        $sex = $row['sex'];
-        $city = $row['city'];
-        $province = $row['province'];
-        $email = $row['email'];
-
+       
+        $birthday = $row['birthday'];    
         $today = date('Y-m-d H:i:s');
         $age = $today - $birthday;
 
-        $query = "INSERT INTO wt_responses(webtoonID, userID, response, name, age, sex, city, province, email, dateAnswered)"
-                    . "VALUES('$webtoonID', '$userID', '$response', '$name', '$age', '$sex', '$city', '$province', '$email', '$today')";
+        $query = "INSERT INTO wt_responses(webtoonID, userID, response, age, dateAnswered)"
+                    . "VALUES('$webtoonID', '$userID', '$response', '$age', '$today')";
         $result = mysqli_query($con, $query);
         
         if ($result) {
@@ -1406,23 +1390,32 @@
 
         while($row = mysqli_fetch_array($result)) {
             $i = $i + 1;
+
+            //from wt_responses
             $webtoonID = $row['webtoonID'];
+            $userID = $row['userID'];
             $response = $row['response'];            
-            $name = $row['name'];
             $age = $row['age'];
-            $sex = $row['sex'];
-            $city = $row['city'];
-            $province = $row['province'];
-            $email = $row['email'];
             $dateAnswered = $row['dateAnswered'];
 
+            //from wt+webtoon
             $query_wt = "SELECT * FROM wt_webtoon WHERE webtoonID='$webtoonID'";
             $result_wt = mysqli_query($con, $query_wt);
             $row_wt = mysqli_fetch_array($result_wt);
 
             $webtoonName = $row_wt['title'];
             $question = $row_wt['question'];
-            
+
+            //from wt_user
+            $query_user = "SELECT * FROM wt_user WHERE userID='$userID'";
+            $result_user = mysqli_query($con, $query_user);
+            $row_user = mysqli_fetch_array($result_user);
+
+            $name = $row_user['lname'].", ".$row_user['fname'].", ".$row_user['mname'];
+            $sex = $row_user['sex'];
+            $city = $row_user['city'];
+            $province = $row_user['province'];
+            $email = $row_user['email'];                
 
             echo "<tr>
                     <td>".$i."</td>
@@ -1440,6 +1433,52 @@
         }
     }
 
+    //check if webtoon is already liked
+    function already_liked($webtoonID, $userID) {
+        global $con;
+
+        $query = "SELECT * FROM wt_likes WHERE webtoonID='$webtoonID' AND userID ='$userID'";
+
+        if ($result = mysqli_query($con, $query)) {
+            $count = mysqli_num_rows($result);  
+            if($count == 1) {
+                return true;                
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            echo mysqli_error($con);
+        }    
+    }
+
+    function insert_likes($webtoonID, $likes, $userID){
+        global $con;
+ 
+        $today = date('Y-m-d H:i:s');        
+
+        $query = "INSERT INTO wt_likes(webtoonID, userID, likes, dateLiked)"
+                    . "VALUES('$webtoonID', '$userID', '$likes', '$today')";
+        $result = mysqli_query($con, $query);
+        
+        if ($result) {
+            return true;
+        }
+        else {
+            echo mysqli_error($con);
+        }
+    }
     
+    function count_likes($webtoonID) { 
+        global $con;
+
+        $query = "SELECT * from wt_likes WHERE webtoonID='$webtoonID'";
+        $result = mysqli_query($con, $query); 
+        $count = mysqli_num_rows($result);  
+
+        return $count;
+    }
+
 ?>
 
