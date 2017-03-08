@@ -35,7 +35,8 @@
                     $ok = 1;  
 
                     // size limit: 50MB max
-                    if ($file_size > 50000000){               
+                    // error checking: 5MB
+                    if ($file_size > 5000000){               
                         $ok= 0;
                         redirect("File too large", "../view/employee/index.php");                        
                     }
